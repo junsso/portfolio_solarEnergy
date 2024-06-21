@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>전기 요금제 > 사용량 분석</title>
+
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<meta name="viewport" content="user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, viewport-fit=cover" />
+
+<!-- webfont load-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet"><!-- font-family: 'Roboto', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet"><!-- font-family: 'Noto Serif KR', serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet"> <!-- font-family: 'Do Hyeon', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"><!-- font-family: 'Noto Sans KR', sans-serif; -->
+
+<!-- ui load -->
+<link rel="stylesheet" type="text/css" href="../css/ui/jquery-ui.css"/><!-- 캘린더 css -->
+<link rel="stylesheet" type="text/css" href="../css/ui/reset.css"/>
+<link rel="stylesheet" type="text/css" href="../css/ui/style_guide.css"/>
+<link rel="stylesheet" type="text/css" href="../css/ui/custom.css"/>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="crossorigin="anonymous"></script> 
+</head>
+<body>
+    
+    <div class="header">
+        <div class="wrapper-md">
+            <h1><a href="#">RESIDENTIAL SOLAR</a></h1>
+            <div class="gnb">
+                <ul>
+                    <li><a href="#">전기 요금제</a></li>
+                    <li><a href="#">태양광 발전량 분석</a></li>
+                    <li><a href="#">국민 DR 참여</a></li>
+                    <li><a href="#">전력거래</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+            <div class="mbStat">
+                <a href="#" class="btn-mypage"></a>
+				<a href="#" class="login-text">로그인</a>
+			</div>
+        </div>
+		<div class="m_hamberger-box">
+			<div class="hamberger"></div>
+			<div class="close"></div>
+		</div>
+		<div class="snb">
+			<div class="wrapper-md">
+				<ul>
+					<li>
+						<a href="#">전기 요금제</a>
+						<ul>
+							<li><a href="#">요금제 소개</a></li>
+							<li><a href="#">사용량 분석</a></li>
+							<li><a href="#">요금제 추천</a></li>
+							<li><a href="#">에너지 절약 컨설팅</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">태양광 발전량 분석</a>
+						<ul>
+							<li class="heads-sub"><a href="#">우리집 태양광</a>
+								<ul>
+									<li><a href="#">우리집 태양광 소개</a></li>
+									<li><a href="#">설치 시뮬레이션</a></li>
+								</ul>
+							</li>
+							<li class="heads-sub"><a href="#">공용 태양광</a>
+								<ul>
+									<li><a href="#">공용 태양광 소개</a></li>
+									<li><a href="#">발전량 현황</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">국민 DR 참여</a>
+						<ul>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">국민 DR</a></li>
+							<li><a href="#">기기 현황</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">전력거래</a>
+						<ul>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">에너지 현황</a></li>
+							<li><a href="#">에너지 구매</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">고객센터</a>
+						<ul>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">자주하는 질문</a></li>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">문의하기</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+
+    <div class="contents">
+        <div class="wrapper-md">
+            <div class="row">
+                <div class="box-left col-lg-2 col-xs-12">
+					<div class="bx-contain sub-navi">
+						<h2>전기 요금제</h2>
+						<ul>
+							<li class=""><a href="#">요금제 소개</a></li>
+							<li class="on"><a href="#">사용량 분석</a></li>
+							<li class=""><a href="#">요금제 추천</a></li>
+							<li class=""><a href="#">에너지 절약 컨설팅</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="box-right col-lg-10 col-xs-12">
+					<div class="bx-contain bx-contents">
+						<div class="box-theme">
+							<div class="sub-gnb">
+								<ul>
+									<li><a href="#"><img src="../images/common/ico_home.png" alt="home" /></a></li>
+									<li><a href="#">전기 요금제</a></li>
+									<li><a href="#">사용량 분석</a></li>
+								</ul>
+							</div>
+							<div class="sub-title">
+								<h1>사용량 분석</h1>
+								<p>
+									현재 사용중인 전력 사용량과 예상 요금을 확인할 수 있습니다
+								</p>
+							</div>
+						</div>
+						<div class="box-subject mg-top-30">							
+							<div class="boxinfo-contents ">
+								<div class="box-graph-wrap">
+									<h2>이번달 누적 <span>05.01 ~ 05.20</span></h2>
+									<div class="graph-contain mg-top-10">
+										<div class="graph-bg">
+											<div class="bar" style="width: 77%;"></div>
+										</div>
+										<div class="box-text mg-top-20">
+											<ul class="row">
+												<li class="col-lg-6">
+													<div class="text-info"><span>이번 달 누적 사용량</span>&nbsp;&nbsp;&nbsp;<strong>311.0</strong>&nbsp;&nbsp;<em>kwh</em></div>
+												</li>
+												<li class="col-lg-6">
+													<div class="text-info"><span>이번달 누적 금액</span>&nbsp;&nbsp;&nbsp;<strong>32,152</strong>&nbsp;&nbsp;<em>원</em></div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="row box-graph mg-top-60">
+									<div class="col-lg-6 col-xs-12">
+										<div class="graph-wrap">
+											<img src="../images/sub/img_graph-b.png" alt="그래프">
+										</div>
+									</div>
+									<div class="col-lg-6 col-xs-12">
+										<table class="table table-info type-b">
+											<colgroup>
+												<col width="50%">
+												<col width="50%">
+											</colgroup>
+											<tr>
+												<td>
+													<div class="box-quantity box-quantity-a">
+														<p><span>평균 누적</span> 사용량</p>
+														<h2>
+															22.34
+															<span>kwh</span>
+															<p>
+																<span>전월대비</span>
+																<em class="up"><i></i>1.45kwh</em>
+															</p>
+														</h2>
+													</div>
+												</td>
+												<td>
+													<div class="box-quantity box-quantity-a">
+														<p><span>누적 평균</span> 사용 요금</p>
+														<h2>
+															22.34
+															<span>원</span>
+															<p>
+																<span>전월대비</span>
+																<em class="down"><i></i>1.45원</em>
+															</p>
+														</h2>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="box-quantity box-quantity-a">
+														<p><span>최고 누적</span> 사용량</p>
+														<h2>
+															22.34
+															<span>kwh</span>
+															<p>
+																<span>전월대비</span>
+																<em class="down"><i></i>1.45kwh</em>
+															</p>
+														</h2>
+													</div>
+												</td>
+												<td>
+													<div class="box-quantity box-quantity-a">
+														<p><span>최저 누적</span> 사용량</p>
+														<h2>
+															22.34
+															<span>kwh</span>
+															<p>
+																<span>전월대비</span>
+																<em class="up"><i></i>1.45kwh</em>
+															</p>
+														</h2>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>								
+							</div>
+							<div class="boxinfo-contents boxinfo-contents-a mg-top-50">
+								<h1>사용량 추이 및 예상 요금</h1>
+								<div class="graph-wrap mg-top-10">
+									<img src="../images/plan/img_graph-a.png" alt="그래프">
+								</div>
+								<div class="box-text box-text-a box-text-a-a mg-top-20">
+									<ul class="row pd-side-50">
+										<li class="col-lg-6 col-xs-12">
+											<div class="text-info"><span>이번 달</span> <strong>예상 사용량</strong> <em>05.01 ~ 05.31</em></div>
+										</li>
+										<li class="col-lg-6 col-xs-12">
+											<div class="box-quantity"> 
+												<h2>
+													<span>전월대비</span>
+													<em class="down"><i></i>1.45kwh</em>
+													22.34
+													<span>kwh</span>
+												</h2>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="graph-wrap mg-top-60">
+									<img src="../images/plan/img_graph-b.png" alt="그래프">
+								</div>
+								<div class="box-text box-text-a box-text-a-a mg-top-20">
+									<ul class="row pd-side-50">
+										<li class="col-lg-6 col-xs-12">
+											<div class="text-info"><span>이번 달</span> <strong>예상 요금</strong> <em>05.01 ~ 05.31</em></div>
+										</li>
+										<li class="col-lg-6 col-xs-12">
+											<div class="box-quantity">
+												<h2>
+													<span>전월대비</span>
+													<em class="up"><i></i>121원</em>
+													45,251
+													<span>원</span>
+												</h2>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="boxinfo-contents .boxinfo-contents-a mg-top-50">
+								<h1>이웃 비교</h1>
+								<ul class="row">
+									<li class="col-lg-6 col-xs-12 ">
+										<div class="box-compare">
+											<div class="text">
+												<div><i class="sad"></i><h1 class="red">에너지 조절이 필요해요</h1></div><!-- 많이 사용 시 우는 아이콘-->
+												<div><i class="smile"></i><h1 class="blue">에너지를 절약하고 있어요</h1></div><!-- 적게 사용 시 웃는 아이콘 -->
+												<div><i class="normal"></i><h1 class="blue">평균으로 에너지를 사용하고 있어요</h1></div> <!-- 평균 사용 시 무표정 아이콘 -->
+												<p>현재 이웃보다 123kwh 더 사용 중</p>
+											</div>
+											<div class="graph-wrap mg-top-30">
+												<img src="../images/plan/img_graph-c.png" alt="그래프">
+											</div>
+											<div class="box-gr-info">
+												<ul class="row">
+													<li class="col-lg-6">
+														<div class="box-quantity type-b">
+															<p><span>우리집</span> 사용량</p>
+															<h2 class="red">
+																1.135
+																<span>kwh</span>
+															</h2>
+														</div>
+													</li>
+													<li class="col-lg-6">
+														<div class="box-quantity type-b">
+															<p><span>이웃 평균</span> 사용량</p>
+															<h2>
+																132.3 
+																<span>kwh</span>
+															</h2>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="col-lg-6 col-xs-12 ">
+										<div class="box-compare">
+											<div class="text">
+												<div><i class="good"></i><h1 class="blue">평균보다 적게 사용하고 있어요</h1></div><!-- 평균보다 적을때 아이콘-->
+												<div><i class="bad"></i><h1 class="red">평균보다 높게 사용하고 있어요</h1></div><!-- 평균보다 높을때 아이콘-->
+												<p>평균보다 6% 적게 사용 중</p>
+											</div>
+											<div class="graph-wrap mg-top-30">
+												<img src="../images/plan/img_graph-d.png" alt="그래프">
+											</div>
+											<div class="box-gr-info ">
+												<ul class="row">
+													<li class="col-lg-6">
+														<div class="box-quantity type-b">
+															<p><span>우리집</span> 사용량</p>
+															<h2 class="red">
+																1.135
+																<span>kwh</span>
+															</h2>
+														</div>
+													</li>
+													<li class="col-lg-6">
+														<div class="box-quantity type-b">
+															<p><span>전체 가구 평균</span> 사용량</p>
+															<h2>
+																132.3 
+																<span>kwh</span>
+															</h2>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="wrapper-md">
+            <div class="row">
+                <div class="col-lg-2 col-xs-12">
+					<div class="boxcs boxcs-a">
+						<h2>고객센터</h2>
+						<h3>1555-1234</h3>
+					</div>
+				</div>
+                <div class="col-lg-6 col-xs-12">
+					<div class="boxcs boxcs-b">
+						<p>서울시 성동구 광나루로 172 린하우스 (성수동1가)</p>
+						<p>TEL. 02-418-7550  FAX. 02-418-7551</p>
+						<p>COPYRIGHT(C) 2015 OMNISYSTEM All Rights Reserved.</p>
+					</div>
+				</div>
+                <div class="col-lg-4 col-xs-12">
+					<div class="boxcs boxcs-c">
+						<ul>
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#">개인정보처리방침</a></li>
+						</ul>
+						<div class="links">
+							<a href="#"><img src="../images/common/ico_logo-other.png" alt="로고" /></a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+<script src="../js/libs/datepicker/jquery-ui.js"></script><!-- 캘린더 js-->
+<script src="../js/ui/ui_popup.js"></script>
+<script src="../js/ui/custom.js"></script>
+
+</body>
+</html>

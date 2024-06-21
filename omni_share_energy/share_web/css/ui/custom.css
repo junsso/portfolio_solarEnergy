@@ -1,0 +1,2565 @@
+@charset "utf-8";
+
+/*-----------------------------------------------
+@custom style
+------------------------------------------------*/
+html, body { min-width:1190px }
+
+.header { background:#fff; border-bottom:1px solid #e6e6e6 }
+.header h1 { position:absolute; top:0; left:0; line-height:70px }
+.header h1 > a { position: relative; font-size: 16px; font-weight: 400; padding-left: 40px;}
+.header h1 > a::before { content: ''; display: block; position: absolute; top: 50%; left: 0; transform: translateY(-50%); background: url('../../images/common/ico_logo.png')no-repeat center; width: 35px; height: 33px; background-size: 100%; }
+.header .gnb { margin:0 0 0 250px; position:relative; z-index:20 }
+.header .gnb > ul { font-size:0 }
+.header .gnb > ul > li { display:inline-block; width:160px; vertical-align:top; line-height:70px; position:relative; text-align:left }
+.header .gnb > ul > li:nth-child(3) { margin-left:40px }
+.header .gnb > ul > li > a { font-size:17px; font-weight: 500; display:inline-block; height:100%; position:relative; letter-spacing: -1px; }
+.header .gnb > ul > li > a:after { content:""; position:absolute; left:0; right:0; bottom:0; background:#51c2c2; height:2px; width:0px; opacity: 0; transition:all .6s ease  }
+.header .gnb > ul > li.on > a:after { width:100%; opacity: 1; }
+.header .gnb > ul > li.on a { color:#51c2c2 }
+.header .mbStat { position:absolute; top:24px; right:0; z-index: 50; }
+.mbStat a { display: inline-block; vertical-align: middle; font-size: 15px; font-weight: 500; color: #333;}
+.mbStat .btn-mypage { background:url('../../images/common/icon-user.png') no-repeat center; width: 21px; height: 21px; }
+.mbStat .btn-bell { background:url('../../images/common/icon-bell.png') no-repeat center; width: 20px; height: 20px; text-indent: -9999px; margin-right: 14px; position: relative; z-index: 9901}
+.mbStat .btn-bell .count { position: absolute; top: -5px; right: -10px; display: block; width: 20px; height: 20px; border-radius: 100%; font-size: 13px; line-height: 20px; color: #fff; background: #000; text-align: center; text-indent: 0;}
+.snb { display:none; background:rgba(255,255,255,0.9); position:absolute; top:70px; left:0; right:0; border-bottom:2px solid rgba(0,0,0,0.3); z-index:10 }
+.header .snb .wrapper-md > ul { margin-left:250px; font-size:0px; padding:20px 0; min-width:900px }
+.header .snb .wrapper-md > ul > li > a { display:none } 
+.header .snb .wrapper-md > ul > li { display:inline-block; width:160px; font-size:14px; vertical-align:top }
+.header .snb .wrapper-md > ul > li:nth-child(3) { margin-left:40px }
+.header .snb .wrapper-md > ul > li li a { display:inline-block; padding:8px 0; position:relative }
+.header .snb .wrapper-md > ul > li li a:after { content:""; position:absolute; left:0; right:0; bottom:0; background:#51c2c2; height:1px; width:0px; transition:all .6s ease }
+.header .snb .wrapper-md > ul > li li a:hover { color:#000; font-weight: 600; }
+.header .snb .wrapper-md > ul > li li a:hover:after { width:100% }
+.header .snb .wrapper-md .heads-sub { position: relative; }
+.header .snb .wrapper-md .heads-sub::after { content: ''; display: block; background: url('../../images/common/ico-right_arrow.png')no-repeat center / cover; width: 8px; height: 5px; position: absolute; top: 18px; right: 0; font-size: 10px; transform: rotate(-180deg)}
+.header .snb .wrapper-md .heads-sub ul { background: #f5f5f5; padding: 0; height: 0; opacity: 0; overflow: hidden; transition:all .6s ease}
+.header .snb .wrapper-md .heads-sub.on ul { height: auto; opacity: 1; padding: 15px;}
+.header .snb .wrapper-md .heads-sub.on::after { transform: rotate(0deg);}
+
+/*알림팝업*/
+.pop-type-2 { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 1190px; z-index: 9999;}
+.popup-wrap #alarmPopup { position: absolute; top: 90px; left: auto; right: 0; transform: translate(0, 0); width: 350px;}
+#alarmPopup .popup-contain { padding: 0;}
+#alarmPopup .popup-contain .popup-inner .title-wrap { padding: 20px; }
+#alarmPopup .popup-contain .popup-inner .title-wrap h1 { text-align: left; font-weight: 500}
+#alarmPopup .popup-contain .popup-inner .title-wrap .setting-btn { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); background: url('../../images/common/settings.png')no-repeat center / cover; width: 20px; height: 20px; }
+#alarmPopup .popup-contain .popup-inner .contents { margin: 0; max-width: 100%; margin: 10px; padding: 5px 10px; max-height: 270px; overflow-y: auto;}
+#alarmPopup .popup-contain .popup-inner .contents::-webkit-scrollbar { width: 5px; background: transparent;}
+#alarmPopup .popup-contain .popup-inner .contents::-webkit-scrollbar-thumb { width: 5px; background: #ccc; border-radius: 20px; overflow: hidden;}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap { text-align: left; padding: 0 15px; border-left: 1px solid #ccc;}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box { padding: 10px 15px; border-bottom: 1px solid #ccc; position: relative;}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box:first-child { padding-top: 0; }
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box .ball { display: block; width: 10px; height: 10px; border-radius: 100%; background: #E20000; position: absolute; top: 0; left: -19.5px; }
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box a { display: block; position: relative;}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box:last-child { border-bottom: 0;}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box h2 { font-size: 15px; min-height: 42px; overflow:hidden; text-overflow:ellipsis; word-wrap:break-word; display:-webkit-box; -webkit-line-clamp:2;-webkit-box-orient:vertical; padding-right: 20px;}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box p { margin-top: 7px; font-size: 13px; color: rgba(0,0,0,0.6)}
+#alarmPopup .close-btn { position: absolute; top: 6px; right: 0; background: url('../../images/common/ico_close_02.png')no-repeat center / cover; width: 12px; height: 12px;}
+
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box:hover h2 { text-decoration: underline;}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box.read .ball { background: #ccc; }
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box.read h2,
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box.read p { color: rgba(0,0,0,0.4);}
+#alarmPopup .popup-contain .popup-inner .contents .box-wrap .box.read .close-btn {  background: url('../../images/common/ico_close_03.png')no-repeat center / cover; }
+
+/*알림설정 팝업*/
+.popup-wrap #settingPopup { position: absolute; top: 90px; left: auto; right: 370px; transform: translate(0, 0); width: 300px;}
+#settingPopup .popup-contain { padding: 0;}
+#settingPopup .popup-contain .popup-inner .title-wrap { padding: 15px; border-bottom: 1px solid #ccc;}
+#settingPopup .popup-contain .popup-inner .title-wrap h1 { text-align: left; font-weight: 500}
+#settingPopup .popup-contain .popup-inner .title-wrap .close-btn { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); background: url('../../images/common/ico_close_4.png')no-repeat center / cover; width: 21px; height: 21px; z-index: 2;}
+#settingPopup .popup-contain .popup-inner .contents { margin: 0; padding: 15px; max-width: 100%;}
+#settingPopup .box-wrap .box { position: relative; padding: 15px 10px; border-bottom: 1px solid #ccc; text-align: left; }
+#settingPopup .box-wrap .box:last-child { border-bottom: 0;}
+#settingPopup .box-wrap .box .toggle { position: absolute; top: 50%; right: 0; transform: translateY(-50%); }
+#settingPopup .toggle .switch { position: relative; display: inline-block; width: 48px; height: 5px; vertical-align:middle;  }
+#settingPopup .toggle .switch input {display:none;}
+#settingPopup .toggle .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #CCCCCC; -webkit-transition: .3s; transition: .3s;}
+#settingPopup .toggle .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 0; top: -7px; background-color: #CCCCCC; -webkit-transition: .6s; transition: .6s; box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.2);}
+#settingPopup .toggle input:checked + .slider { background-color: #FFC550; }
+#settingPopup .toggle input:checked + .slider:before { -webkit-transform: translateX(30px); -ms-transform: translateX(30px); transform: translateX(30px); background-color: #FFAA00; }
+#settingPopup .toggle .slider.round { border-radius: 34px;}
+#settingPopup .toggle .slider.round:before { border-radius: 50%;}
+
+
+
+
+.bg-gray { background:#f5f5f5 }
+
+.maincont { padding:20px 0 }
+.maincont .boxbn,
+.maincont .boxbbs,
+.maincont .boxcs,
+.maincont .imgbn { overflow:hidden }
+.maincont .boxbn .boxbn-btn { position: relative; z-index: 5; }
+.box-a { position:relative; height:450px; background:#fff; border-radius:10px; padding:35px }
+.box-b { position:relative; height:450px; background:url('../../images/main/mainbn-boxbg-2.png') no-repeat center bottom / cover #FFDA63 ; border-radius:10px; padding:35px }
+.box-c { position:relative; height:215px; background:#daeef6; border-radius:10px; padding:35px }
+.box-d { position:relative; height:215px; background:#51c2c2; border-radius:10px; padding:35px }
+.box-e { position:relative; height:300px; background:#fff; border-radius:10px; padding:25px 35px }
+.maincont .boxlink { position:relative; height:140px; background:#fff; border-radius:10px }
+.maincont .imgbn { position:relative; height:140px; border-radius:10px }
+.maincont .imgbn a { display:block; font-size:0px }
+.maincont .imgbn img { position:absolute; top:50%; left:50%; width:auto; height:100%; transform:translate(-50%, -50%) }
+.boxbn-subtitle { color:rgba(0,0,0,0.8); font-size:14px; font-weight: 500; letter-spacing: -0.5px; }
+.boxbn-title h2 { color:rgba(0,0,0,1); font-size:28px; font-weight: 700; letter-spacing: -1.5px }
+.boxbn-description { color:rgba(0,0,0,0.75); font-size:14px; font-weight:300; margin-top:8px; line-height:20px }
+.boxbn .bg-image { position:absolute; right:0; bottom:15px }
+.box-c .bg-image { position:absolute; right:0; bottom:-5px }
+.box-d .bg-image { position:absolute; right:8px; bottom:-10px }
+
+.box-c .boxbn-subtitle { color:#2482b2 }
+.box-c .boxbn-title h2 { color:#1e709a }
+.box-d .boxbn-subtitle { color:#fff }
+.box-d .boxbn-title h2 { color:#fff }
+.box-c .boxbn-btn .btn { border-color:#86b9da; color:#4090bd }
+.box-d .boxbn-btn .btn { border-color:#fff; color:#fff }
+
+.boxbbs h2 { border-bottom:1px solid #ccc; color:#000; font-size:24px; font-weight: 500; letter-spacing: -1px; padding-bottom:10px; margin-bottom:10px }
+.boxbbs li a { display:block; padding: 6px 0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.boxbbs li a:hover { text-decoration:underline }
+.boxbbs .btn-more { position:absolute; top:27px; right:35px; padding:5px 8px; border-radius:4px; border:1px solid transparent; transition:all .3s ease }
+.btn-more:after { content:url('../../images/main/icon-plus.png'); vertical-align: -2px; padding-left:5px; transition:all .3s ease }
+.btn-more:hover, .btn-more:active { background:#f6f6f6; border-color:#dadada }
+
+.boxlink a { display:block; height:100% }
+.boxlink .icon { position:absolute; top:50%; left:35px; transform:translate(0, -50%); background:#f5f5f5; border-radius:100%; width:80px; height:80px }
+.boxlink .icon img { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) }
+.boxlink > a > div { position:absolute; top:50%; left:135px; transform:translate(0, -50%); word-break: keep-all; padding-right:30px }
+.boxlink h3 { font-weight: 500; color:#000 }
+.boxlink h3:after { content:">"; font-family:dotum; padding-left:16px }
+
+.footer { background:#F7F7F7; padding: 20px 0; border-top: 1px solid #F2F3F7;}
+body.bg .footer { background: #fff;}
+.boxcs-a h2 { font-size: 25px; color: #999; font-weight: 700; padding-left: 37px; position: relative; line-height: 23px; }
+.boxcs-a h2::before { content: ''; display: block; position: absolute; top: 50%; left: 0; transform: translateY(-50%); background: url('../../images/main/icon-phone.png')no-repeat center / cover; width: 30px; height: 25px;}
+.boxcs-a h3 { font-size: 26px; color: #999; font-weight: 700; line-height: 24px; padding-top: 5px;}
+.boxcs-b p { font-size: 14px; color: #666; padding-bottom: 5px; line-height: 1em;}
+.boxcs-b p:last-child { padding-top: 5px;}
+.boxcs-c { text-align: right;}
+.boxcs-c ul { font-size: 0; margin: 0 -10px;}
+.boxcs-c ul li { font-size: 14px; line-height: 1em; display: inline-block; vertical-align: middle; padding: 0 10px; position: relative; }
+.boxcs-c ul li::after { content: '|'; display: block; position: absolute; top: 50%; right: 0; transform: translateY(-50%); }
+.boxcs-c ul li:last-child::after { display: none;}
+.boxcs-c ul li a { color: #666;}
+.boxcs-c .links { padding-top: 7px;}
+
+/*로그인후 모달*/
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: auto; background: rgba(0,0,0,0.4); z-index: 55;}
+.modal-content { background: #fff; margin: 120px auto; max-width: 1190px; position: relative;}
+.modal .close-btn { background: url('../../images/common/ico_close.png')no-repeat center / contain; width: 20px; height: 20px; position: absolute; top: 15px; right: 20px; cursor: pointer;}
+.modal .contents-wrap { padding: 50px 0 40px;}
+.modal .contents-wrap > ul li { position: relative; padding: 0 40px; }
+.modal .contents-wrap > ul li:after { content: ''; display: block; width: 1px; height: 100%; border-right: 1px solid #EEEEEE; position: absolute; top: 0; right: 0; }
+.modal .contents-wrap > ul li:last-child:after { display: none;}
+
+.box-myinfo-b { height: 56px;}
+.box-myinfo-b .btn { top: 7px;}
+.box-myinfo-b h3 { position: absolute; top: 7px; right: 0; font-size: 14px; font-weight: 300; color: #666;}
+
+.table.table-pop { margin-top: 23px; margin-bottom: 0;}
+.table.table-pop th,
+.table.table-pop td { border: none; vertical-align: middle; padding: 5px 0;}
+.table.table-pop th p { font-size: 15px; font-weight: 400;}
+.table.table-pop td { text-align: right; font-size: 18px;}
+.table.table-pop td span { font-size: 28px; font-weight: 700;}
+.table.table-pop td span em { font-size: 18px; font-weight: 500;}
+.point-gray { font-size: 13px !important; font-weight: 300 !important; width: 144px; text-align: center; padding: 7px 0; background: #F5F5F5; border-radius: 15px;}
+
+
+
+/*-----------------------------------------------
+@로그인
+------------------------------------------------*/
+
+.box-form { max-width: 350px; margin: auto; text-align: center; padding: 10vw 0 13vw;}
+.box-form form > h1 { font-size: 28px; font-weight: 700; margin-bottom: 20px;}
+.input-wrap.input-wrap-login { border: 1px solid #ccc; margin-bottom: 10px;}
+
+.table.table-login { margin-bottom: 0;}
+.table.table-login th,
+.table.table-login td { border: none; vertical-align: middle; padding: 17px 15px; text-align: left;}
+.table.table-login th { font-size: 16px; font-weight: 500;}
+.table.table-login td input { border: none; font-size: 14px; font-weight: 300; color: #999; width: 100%;}
+
+.box-form .check_wrap { text-align: right; padding: 7px 0;}
+.box-form .check_wrap label.label { font-size: 14px; padding-right: 0; padding-left: 23px;}
+.box-form .check_wrap label.label:before,
+.box-form .check_wrap .check_box:checked ~ .label:after { width: 18px; height: 18px;}
+
+.box-form .boxbn-btn { padding-bottom: 10px;}
+.box-form .boxbn-btn .btn { width: 100%; padding: 15px 0; text-align: center; font-size: 16px;}
+
+.box-form .search-box span { font-size: 14px; font-weight: 300; color: #888; position: relative; padding: 0 10px; cursor: pointer;}
+.box-form .search-box span:after { content: '|'; display: block; position: absolute; top: 0; right: -4px; }
+.box-form .search-box span:last-child:after { display: none;}
+
+/*아이디찾기 팝업*/
+
+.popup-wrap .popup.serach-id .popup-contain { padding: 0 0 30px;}
+.popup-wrap .popup.serach-id .tabs ul::after { display: none;}
+.popup-wrap .popup.serach-id .tabs ul li { width: 50%; box-sizing: border-box; padding: 16px 0; border: 0; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc;}
+.popup-wrap .popup.serach-id .tabs ul li:first-child { border-left: 0;}
+.popup-wrap .popup.serach-id .tabs ul li:last-child::after { display: none;}
+.popup-wrap .popup.serach-id .tabs ul li p { font-size: 17px; font-weight: 700; }
+.popup-wrap .popup.serach-id .tabs ul li.current { border-bottom: 1px solid #fff;}
+.popup-wrap .popup.serach-id .tabs ul li.current::after { display: none;}
+
+.popup-wrap .popup.serach-id .popup-contain .popup-inner .contents { padding: 20px; max-width: 100%;}
+.popup-wrap .popup.serach-id .tab-content { border: none; }
+
+/*비밀번호찾기 팝업*/
+.popup.change .popup-contain .popup-inner .contents .box-text > h3 { font-size: 13px; font-weight: 300; color: #666666;}
+
+
+
+/*-----------------------------------------------
+@임시 비밀번호 이메일 양식
+------------------------------------------------*/
+
+.contents-mail .form-wrap { max-width: 900px; margin: 5vw auto; border: 1px solid #CCCCCC; padding: 60px 60px 30px; }
+.contents-mail .form-wrap .title h1 { font-size: 28px; font-weight: 700;}
+.contents-mail .form-wrap .title h2 { font-size: 22px; font-weight: 700;}
+.contents-mail .form-wrap .linear { margin-top: 20px; width: 100%; height: 4px; background: linear-gradient(to right, #1C6EAC, #92BBF2)}
+
+.contents-mail .form-wrap .content-wrap { padding: 30px 0;}
+
+.table.table-email { border: 1px solid #ccc; }
+.table.table-email th,
+.table.table-email td { border: 0; padding: 10px 20px;}
+.table.table-email th { background: #F2F3F7; border-right: 1px solid #ccc; text-align: center;}
+
+.contents-mail .form-wrap .content-wrap .text p { font-size: 16px; font-weight: 400;}
+.contents-mail .form-wrap .content-wrap .text p > span { font-weight: 400;}
+.orange { color: #FFA407;}
+
+.contents-mail .form-wrap .content-wrap .boxbn-btn { padding: 30px 0 0;}
+.contents-mail .form-wrap .content-wrap .btn { margin-right: 20px;}
+
+.btn-type-a { border: 1px solid #4C75AA; color: #4C75AA; border-radius: 50px;}
+.btn-type-b { border: 1px solid #6B97CF; color: #6B97CF; border-radius: 50px;}
+
+
+/*-----------------------------------------------
+@우리집 태양광 소개
+------------------------------------------------*/
+.contents { }
+.box-left, .box-right { padding: 37px 0;}
+.box-right { border-left: 1px solid #EEEEEE; padding-bottom: 100px;}
+
+/*서브네비*/
+.sub-navi { padding: 0 45px 0 0; word-break: keep-all;}
+.sub-navi h2 { text-align: center; font-size: 26px; font-weight: 700; color: #000; border-bottom: 2px solid #FFC550; padding-bottom: 13px;} 
+.sub-navi > ul { padding-top: 20px; }
+.sub-navi ul li { color: #000;}
+.sub-navi > ul > li { padding: 0 0 20px; font-size: 15px;}
+.sub-navi > ul > li:last-child { padding: 0;}
+.sub-navi > ul > li > a { padding: 0 15px; transition: 0.4s all;}
+.sub-navi > ul > li > a:hover { font-weight: 500;}
+.sub-navi > ul > li > ul { margin-top: 0; background: #F7F7F7; border-top: 1px solid #ccc; height: 0; opacity: 0; overflow: hidden; transition: 0.6s all;}
+.sub-navi > ul > li > ul li { padding: 10px 20px; border-bottom: 1px solid #EEEEEE;}
+.sub-navi > ul > li.show > ul { height: auto; opacity: 1; margin-top: 10px;}
+.sub-navi > ul > li:hover > ul { height: auto; opacity: 1; margin-top: 10px;}
+.sub-navi .on a { font-weight: 700;}
+.sub-navi > ul > li > ul li:hover a { font-weight: 700;}
+
+/*서브타이틀*/
+.bx-contents { padding: 0 0 0 50px; }
+.box-theme {position: relative; } 
+.sub-gnb { position: absolute; top: -10px; right: 0; }
+.sub-gnb > ul { font-size: 0;}
+.sub-gnb > ul li { font-size: 12px; line-height: 1em; color: #888888; font-weight: 300; display: inline-block; vertical-align: middle; padding: 0 7px; position: relative;}
+.sub-gnb > ul li::after { content: ''; display: block; position: absolute; top: 2px; right: -3px; background: url('../../images/common/ico_next.png')no-repeat center; width: 6px; height: 8px;}
+.sub-gnb > ul li:last-child a { font-weight: 700;}
+.sub-gnb > ul li:last-child::after { display: none;}
+
+.sub-title { border-bottom: 1px solid #DDDDDD; padding: 0 0 30px; word-break: keep-all;}
+.sub-title h1 { font-size: 26px; font-weight: 700; color: #000;}
+.sub-title p { font-size: 15px; color: #666; padding-top: 7px; padding-right: 30%;}
+
+/*box-subject*/
+.box-subject { word-break: keep-all;}
+.boxct-inverse > div { float: right; }
+.boxct .thumb-wrap .img-wrap { padding-top: 73%;}
+.boxct .boxct-b {padding: 0 20px; position: relative;}
+.boxct .boxct-b h2 { font-size: 24px; font-weight: 700; color: #000; padding: 10px 0;}
+.boxct .boxct-b p { font-size: 15px; line-height: 1.8em; color: #000;}
+
+.sub-head-title { font-size: 24px; font-weight: 700; color: #000; padding: 10px 0;}
+
+
+
+
+
+/*-----------------------------------------------
+@설치 시뮬레이션
+------------------------------------------------*/
+
+.boxinfo h1 { font-size: 24px; font-weight: 700; color: #000; display: inline-block; vertical-align: middle;}
+.boxinfo > .btn-a { font-size: 12px; color: #FFAA00; display: inline-block; vertical-align: middle; border: 1px solid #FFAA00; padding: 3px 10px; border-radius: 3px; margin-left: 5px;}
+.boxinfo p { font-size: 13px; color: #888888; padding-top: 7px;}
+.boxinfo ul { padding-top: 22px; }
+.boxinfo ul li { font-size: 16px; color: #000; position: relative; padding-left: 12px; padding-bottom: 5px;}
+.boxinfo ul li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50px; background: #000; position: absolute; top: 11px; left: 0;}
+.boxinfo ul li:last-child { padding-bottom: 0;}
+
+.boxinfo-contents {}
+.boxinfo-contents > h1 { font-size: 24px; font-weight: 700; color: #000; padding-bottom: 20px;}
+.table-input input{ display: inline-block; vertical-align: middle; }
+.sign { font-size: 13px; color: #666666; font-weight: 300; margin-left: 5px;}
+.sub-text { font-size: 12px; color: #999; margin-left: 19px; }
+.info-table .table-input input { width: 180px;}
+input:focus { border: 1px solid #FFAA00; color: #FFAA00}
+
+.btn-wrap { text-align: center;}
+
+/*시뮬레이션 결과*/
+.table.type-a p { display: inline-block; vertical-align: middle; font-size: 15px; color: #000; font-weight: 500;}
+.table.type-a span { vertical-align: middle; margin-left: 10px; font-size: 15px; color: #000; font-weight: 400;}
+.table.type-a span em { font-size: 12px; color: #888; font-weight: 300; }
+
+.list-style li { font-size: 13px; color: #666666; position: relative; padding-left: 7px; padding-bottom: 7px;}
+.list-style li::before { content: ''; display: block; width: 2.5px; height: 2.5px; background: #666; border-radius: 30px; position: absolute; top: 8px; left: 0;}
+
+.graph-wrap { text-align: center;}
+
+
+/*-----------------------------------------------
+@공용 태양광 소개
+------------------------------------------------*/
+.boxct-a p { text-align: center;}
+.box-sort { font-size: 0;}
+.box-sort > div { display: inline-block; vertical-align: middle; float: none;}
+.box-sort > div + div { display: inline-block; vertical-align: middle; float: none;}
+
+
+
+/*-----------------------------------------------
+@공용 태양광 소개
+------------------------------------------------*/
+.table.type-b tr td { padding: 15px 10px;}
+.box-quantity > p { font-size: 16px; font-weight: 400; color: #000; }
+.box-quantity > p > span { font-size: 16px; font-weight: 700; color: #000;}
+.box-quantity h2 { font-size: 28px; color: #000; font-weight: 700;}
+.box-quantity span { font-size: 13px; color: #888888; font-weight: 400;}
+.box-quantity em { font-size: 13px; font-weight: 400; color: #0065D8; margin: 0 5px 0 15px; position: relative;}
+.box-quantity .down i { position: absolute; top: 3px; left: -11px; margin-right: 2px; display: inline-block; vertical-align: middle; width: 0; height:0; border-style: solid; border-width: 5px; border-color: #0065D8 transparent transparent transparent;  }
+.box-quantity .up { color: #E20000;}
+.box-quantity .up i { position: absolute; top: 0; left: -11px; margin-right: 2px; display: inline-block; vertical-align: middle; width: 0; height:0; border-style: solid; border-width: 5px; border-color: transparent transparent #E20000 transparent;  }
+
+.tabs ul { font-size: 0; position: relative;}
+.tabs ul::after { content: ''; display: block; width: 100%; border-bottom: 1px solid #FFC550;}
+.tabs ul li { width: 33.33%; display: inline-block; vertical-align: middle; font-size:16px; font-weight: 400; color: #999999; border-top: 1px solid #CDCDCD; border-right: 1px solid #CDCDCD; background: #F7F7F7; padding: 10px 0; text-align: center; position: relative; cursor: pointer;}
+.tabs ul li:first-child { border-left: 1px solid #CDCDCD;}
+.tabs ul li:hover { border: 1px solid #FFC550; border-top: 3px solid #FFC550 ; border-bottom: 0; background: #fff; color: #000; padding: 9px 0;}
+.tabs ul li:hover:after,
+.tabs ul li.current:after { border-bottom: 1px solid #fff;}
+.tabs ul li.current { border: 1px solid #FFC550; border-top: 3px solid #FFC550 ; border-bottom: 0; background: #fff; color: #000; padding: 9px 0;}
+.tabs ul li.current::after { content: ''; display: block; position: absolute; bottom: -1px; left: 0; width: 100%; border-bottom: 10px solid #fff;}
+.tab-content { display: none; background: #fff; padding: 20px 40px 0; border: 1px solid #EEEEEE; }
+.tab-content.current { display: inherit; border-top: 0;}
+
+.table.type-b { text-align: left;}
+.table.type-b tr th { width: 25%; border-bottom: 2px solid #CCCCCC; text-align: center; font-size: 16px; font-weight: 500; color: #000; padding: 14px 0;}
+.table.type-b tr td { padding: 14px 20px; font-weight: 400;}
+
+.box-quantity.type-a h2 {}
+.box-gr-info { padding: 30px 0;}
+.box-gr-info ul li { text-align: center; position: relative;}
+.box-gr-info ul li::after { content: ''; display: block; height: 100%; border-right: 1px solid #DCDCDC; position: absolute; top: 50%; right: 0; transform: translateY(-50%); }
+.box-gr-info ul li:last-child::after { display: none;}
+
+
+
+/*-----------------------------------------------
+@국민 DR 참여 > 국민 DR 참여 현황
+------------------------------------------------*/
+
+.boxct .boxct-b p > span { font-size: 13px; color: #888888;}
+
+.box-calender { position: absolute; top: 11px; right: 0; }
+.box-calender .calender { float: left; margin-right: 15px; }
+.calender input { width: 110px; display: inline-block; vertical-align: middle;}
+.calender .ui-datepicker-trigger { text-indent: -9999px; display: inline-block; background: url('../../images/common/ico_calender.png')no-repeat center; width: 22px; height: 22px; vertical-align: middle; margin-left: 7px; cursor: pointer;}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year { vertical-align: middle;}
+.box-calender .box-lookup { float: right;}
+.box-calender .box-lookup .select-wrap { text-align: right;}
+.box-calender .box-lookup .select-wrap span { font-size: 14px; color: #000;}
+.select-a { -webkit-appearance: none; -moz-appearance: none; appearance: none; background: url('../../images/common/ico_select-arrow.png')no-repeat 90% 50%;}
+.box-calender .box-lookup .select-wrap .form-control.select-a { display: inline-block; vertical-align: middle; width:73px; border-radius: 0; margin: 0 6px;} 
+.box-calender .box-lookup .select-wrap .boxbn-btn { display: inline-block; vertical-align: middle;  }
+.box-calender .box-lookup .select-wrap .boxbn-btn .btn { padding: 6px 12px;}
+.btn-c { background: #000000; color: #fff; display: inline-block; padding: 7px 12px; border-radius: 3px;}
+
+.box-text { background: #F7F7F7; border-radius: 10px;}
+.box-text ul { margin: 0; }
+.box-text ul li { text-align: center; position: relative; padding: 21.5px 0;}
+.box-text ul li::after { content: ''; display: block; position: absolute; top: 50%; right: 0; transform: translateY(-50%); height: 60%; border-right: 1px solid #CCCCCC;}
+.box-text ul li:last-child::after { display: none;}
+.box-text ul li .text-info { font-size: 16px; color: #000; font-weight: 500; }
+.box-text ul li .text-info span { font-size: 16px; font-weight: 500;}
+.box-text ul li .text-info strong { font-size: 28px; font-weight: 700;}
+.box-text ul li .text-info em { font-size: 16px; font-weight: 400;}
+.box-text ul li .text-info .btn { margin-left: 10px;}
+
+.important { background: #f0ad4e;}
+.scroll-box { max-height: 236px; overflow-y: auto;}
+.scroll-box::-webkit-scrollbar { border: 1px solid #efefef; background: #F5F5F5; width: 12px; }
+.scroll-box::-webkit-scrollbar-thumb { background: #ccc; }
+.scroll-box::-webkit-scrollbar-button:vertical:increment { background: url('../../images/common/ico_overflow-bottom-arrow.png')no-repeat center 50%; width: 8px; height: 8px;}
+.scroll-box::-webkit-scrollbar-button:vertical:decrement { background: url('../../images/common/ico_overflow-top-arrow.png')no-repeat center 50%; width: 8px; height: 8px;}
+
+
+/*-----------------------------------------------
+@국민 DR 참여 > 기기현황
+------------------------------------------------*/
+
+.box-text-c { padding: 0;}
+.box-text-c .text-info { position: relative;}
+.box-text-c ul li .text-info strong { margin-left: 14px;}
+.tooltip { position: absolute; top: 14px; display: inline-block; vertical-align: middle; font-size: 8px !important; color: #999 !important; width: 14px; height: 14px; border: 1px solid #999; background: #fff; border-radius: 500px; line-height: 1.4em; font-weight: 700; cursor: default;}
+.tooltip .tooltiptext { visibility: hidden; width: 390px; background-color: #fff; color: #666; font-size: 13px !important; line-height: 1.5em; text-align: left; border-radius: 6px; padding: 20px; position: absolute; z-index: 1; top: 30px; left: -1000%; opacity: 0; transition: opacity 0.3s; word-break: keep-all; box-shadow: 1px 3px 15px rgba(0,0,0,0.16);}
+.tooltip .tooltiptext::after { content: ""; position: absolute; top: -20px; left: 31%; margin-left: -5px; border-width: 10px; border-style: solid; border-color:  transparent transparent #fff transparent ;  }
+.tooltip:hover .tooltiptext { visibility: visible; opacity: 1;}
+
+/*디바이스 온/오프 설정*/
+.device { position: relative;}
+.device > .btn { padding: 6px 20px; position: absolute; top: 11px; right: 0;}
+.box-power { border: 1px solid #DDDDDD; border-radius: 10px; padding: 20px; position: relative; height: 169.97px;}
+.box-power .box-img > p { width: 40px; height: 69.97px;}
+.box-power .box-img h3 { font-size: 20px; font-weight: 400; margin-top: 5px}
+.box-power .box-img span { font-size: 16px; font-weight: 300;}
+.box-power .input_box { position: absolute; top: 20px; right: 20px;}
+
+.box-power .box-img .box-icon { }
+.box-power .box-img .box-icon > div {top: 0; left: 0; width: 40px; height: 69.97px;}
+
+.box-power .box-switch { position: absolute; top: 20px; right: 20px;}
+.box-power .box-switch > div { cursor: pointer;}
+
+.box-power .on { display: none;}
+.box-power.on .on{ display: block;}
+.box-power.on .off { display: none;}
+
+/*디바이스 등록 팝업*/
+.popup.device {}
+.popup.device .table tr > th,
+.popup.device .table tr > td { border-bottom: 0;}
+.popup.device .table .form-control { height: 40px;}
+.popup.device .table .input { height: 40px;}
+
+
+
+
+/*-----------------------------------------------
+@고객센터
+------------------------------------------------*/
+.sub-title.type-a { border-bottom: 0; text-align: center;}
+.sub-title.type-a h1 { }
+
+.search { }
+.search .input-wrap { max-width: 500px; margin: 0 auto; position: relative; }
+.search .input-wrap .input { width: 84%; height: 46px; padding: 0 30px; font-weight: 400; }
+.search .input-wrap .input::placeholder { color: #999999;}
+.search .boxbn-btn { position: absolute; top: 0; right: 0; width: 16%;}
+.search .boxbn-btn .btn { border-radius: 0; padding: 13px 26px;}
+
+.boxct .boxct-c { max-width: 750px; margin: 0 auto; }
+.boxct .boxct-c h2 { font-size: 20px; font-weight: 700; color: #000;}
+
+.toggle-wrap { border-top: 1px solid #666666;}
+.toggle-wrap ul li { border-bottom: 1px solid #CCCCCC;}
+.toggle-wrap .title-wrap { padding: 16px 20px; cursor: pointer;}
+.toggle-wrap .title-wrap p { font-size: 16px; font-weight: 400; padding: 0 42px; position: relative;}
+.toggle-wrap .title-wrap p.question::before { content: 'Q.'; display: block; font-size: 24px; font-weight: 700; position: absolute; top: 50%; left: 0; transform: translateY(-50%);}
+.ico-dw { position: absolute; top: 8px; right: 15px; display: block; background: url('../../images/common/ico_arrow-right-dw.png')no-repeat center; width: 18px; height: 10px;}
+.toggle-wrap .sub-contents { display: none; padding: 16px 62px; background: #F7F7F7; border-top: 1px solid #ccc;}
+.toggle-wrap .sub-contents p { font-size: 14px; font-weight: 400; line-height: 23px;}
+.toggle-wrap ul li .title-wrap.on .ico-dw { transform: rotate(180deg);}
+
+.box-cs-navi { max-width: 750px; margin: 0 auto;}
+.box-cs-navi > ul li { padding: 0 20px; position: relative; text-align: center;}
+.box-cs-navi > ul li::after { content: ''; display: block; position: absolute; top: 0; right: 0; height: 100%; border-right: 1px solid #DDDDDD; }
+.box-cs-navi > ul li:last-child::after { display: none;}
+.box-cs-navi > ul li a h2 img { max-width: 35%; }
+.box-cs-navi > ul li a h3 { font-size: 18px; font-weight: 700; color: #000;}
+.box-cs-navi > ul li a p { font-size: 14px; color: #888;}
+
+
+
+
+/*-----------------------------------------------
+@공지사항
+------------------------------------------------*/
+
+.boxct-d { max-width: 750px; margin: 0 auto;}
+.table.type-c tr th { text-align: center; font-weight: 700; color: #000; padding: 12px 8px; font-size: 16px;}
+.table.type-c tr td { padding: 11px 40px; color: #000; font-weight: 400; }
+.table.type-c tr td a { display: block; width: 509px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+
+
+/*-----------------------------------------------
+@공지사항 상세
+------------------------------------------------*/
+.table.type-d { margin: 0;}
+.table.type-d tr th { font-size: 15px; font-weight: 500; padding: 11px 30px;}
+.table.type-d tr td { padding: 11px 30px; vertical-align: middle; font-size: 13px; color: #999; font-weight: 400;}
+.table.type-d .date { font-weight: 400; color: #999999; font-size: 12px; text-align: right; vertical-align: middle;}
+.table.type-d .contents { padding: 20px 0 40px; font-size: 14px; font-weight: 400; color: #000; }
+
+.table.type-e tr td { border-bottom: 1px solid #ddd;}
+.table.type-e tr td:first-of-type { padding: 8px 30px; font-size: 11px; font-weight: 300; color: #666666;}
+.table.type-e tr td:nth-of-type(2) a { text-align: left; font-size: 12px; color: #666666; font-weight: 400;}
+.table.type-e tr td:nth-of-type(3) { font-size: 12px; font-weight: 400; color: #999; padding: 8px 30px; text-align: right;}
+
+.btn-wrap .btn-list { padding: 10px 50px; border-color: transparent; font-size: 15px; font-weight: 400; text-align: center;}
+
+
+
+/*-----------------------------------------------
+@문의하기
+------------------------------------------------*/
+
+.table.type-f { table-layout: fixed;}
+.table.type-f tr th { padding: 11px 8px; font-size: 16px; font-weight: 500; text-align: center;}
+.table.type-f tr th:nth-of-type(2) { width: 50%;}
+.table.type-f tr td { padding: 10px 8px; font-size: 14px; text-align: center; font-weight: 400; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.table.type-f tr td:nth-of-type(2) { text-align: left; width: 50%; }
+.table.type-f tr td:nth-of-type(2) a { }
+span.normal { color: #666666; font-weight: 400;}
+span.complete { color: #E20000; font-weight: 400;}
+
+.pageNav > .boxbn-btn { text-align: right;}
+
+/*-----------------------------------------------
+@문의하기 > 상세페이지
+------------------------------------------------*/
+
+.table.type-g tr:nth-of-type(5) .table-box > h1 { position: relative;}
+.table.type-g tr:nth-of-type(5) .table-box > h1:after { content: ''; display: block; position: absolute; top: 50%; right: -26px; transform: translateY(-50%); background: url('../../images/cs/ico_download.png')no-repeat center / contain; width: 16px; height: 16px;}
+.table.type-g tr td { padding: 14px 10px;}
+.table-box { display: table;}
+.table-box > h1 { display: table-cell; vertical-align: middle; font-size: 15px; font-weight: 500; padding: 5px 20px; width: 88px; box-sizing: border-box; background: #f7f7f7; border-radius: 50px; text-align: center;}
+.table-box > span { display: table-cell; vertical-align: middle; font-size: 14px; font-weight: 400; padding-left: 16px;}
+.table-box > a { display: inline-block; vertical-align: middle; margin-top: 6px; padding-left: 32px; font-size: 15px;}
+.table-answer { text-align: right;}
+.table-answer > p { font-size: 12px; color: #999; font-weight: 400;}
+
+.boxbn-btn.btn-double-wrap .btn { padding: 10px 36px; margin: 0 3px;}
+
+/*-----------------------------------------------
+@문의하기 > 작성
+------------------------------------------------*/
+
+.boxct-e { max-width: 800px; margin: 0 auto;}
+.table.type-h tr > th { padding: 16px 20px 16px 50px; vertical-align: middle; font-size: 16px; font-weight: 500;}
+.table.type-h tr > td { padding: 16px 50px 16px 20px; font-size: 15px; font-weight: 400;}
+.table.type-h tr > th.top { vertical-align: top;}
+
+.input-wrap-qna .input { height: 38px; font-weight: 400; border-radius: 0;}
+.input-wrap-qna .input::placeholder { color: #bbb; font-size: 14px; font-weight: 300;}
+.input-wrap-qna textarea.form-control { color: #000; border-radius: 0; font-size: 15px; font-weight: 400;}
+.input-wrap-qna textarea.form-control::placeholder { color: #bbb; font-size: 14px; font-weight: 300;}
+
+.filebox { 
+	position: relative;
+}
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.filebox label {
+	position: absolute; top: 50%; right: -71px; transform: translateY(-50%);}
+
+/* named upload */
+.filebox .upload-name {
+	display: inline-block;
+	height: 38px;
+	font-size:15px; 
+	color: #000; 
+	font-weight: 400;
+	padding: 0 10px;
+	vertical-align: middle;
+	background-color: #fff;
+	border-radius: 0;
+}
+
+.check_wrap .check_box { display: none; }
+.check_wrap label.label { display: inline-block; color: #999; font-size: 16px; padding-left: 30px; position: relative; cursor: pointer; }
+.check_wrap label.label:before { content:''; display: inline-block; position: absolute; top: 50%; left: 0; transform: translateY(-50%); background: url('../../images/common/ico_check-circle-regular.png')no-repeat center / contain; width: 20px; height: 20px;}
+.check_wrap .check_box:checked ~ .label { color: #ffaa00;}
+.check_wrap .check_box:checked ~ .label:after { content: ''; display: inline-block; width: 20px; height: 20px; position: absolute; top: 50%; left: 0; transform: translateY(-50%); background: url('../../images/common/ico_check-circle-regular02.png')no-repeat center / contain; background-color: #fff;}
+
+
+
+/*-----------------------------------------------
+@고객센터 > 서비스 이용안내
+------------------------------------------------*/
+
+.toggle-wrap .title-wrap p.normal { padding: 0 10px;}
+.toggle-wrap .sub-contents.normal { padding: 16px 30px;}
+
+
+/*-----------------------------------------------
+@고객센터 > 이용약관
+------------------------------------------------*/
+
+.toggle-wrap .sub-contents p > strong { font-weight: 700}
+
+
+/*-----------------------------------------------
+@전기 요금제 > 요금제 소개
+------------------------------------------------*/
+
+.box-big {display: table; border: 1px solid #CDCDCD; width: 100%; }
+.box-big .box-small { display: table-cell; vertical-align: middle;}
+
+.box-big .box-xsmall { display: table;}
+.box-big .box-xsmall h1 { display: table-cell; vertical-align: middle; width: 128px; height: 128px; background: #F9F9FA; padding: 30px; }
+.box-big .box-xsmall h2 { display: table-cell; vertical-align: middle; padding: 0 30px; }
+.box-big .box-xsmall h2 span { font-size: 26px; font-weight: 500; line-height: 1em; }
+.box-big .box-xsmall h2 .btn-basic { vertical-align: top; font-size: 12px; line-height: 1em; font-weight: 400; padding: 4px 6px; border-radius: 2px;}
+.box-big .box-xsmall p { font-size: 14px; font-weight: 300; color: #666666;}
+
+.box-big .box-small.bx-s-a { width: 40%;}
+
+.box-big .box-small.bx-s-b { width: 40%; text-align: right;}
+.box-big .box-small.bx-s-b p { display: inline-block; vertical-align: middle; font-size: 16px; font-weight: 400; }
+.box-big .box-small.bx-s-b h2 { display: inline-block; vertical-align: middle; font-size: 34px; font-weight: 700; padding: 0 15px; }
+.box-big .box-small.bx-s-b h2 > span { font-size: 14px; font-weight: 500;}
+
+.box-big .box-small.bx-s-c { padding: 0 35px;}
+.box-big .box-small.bx-s-c .btn { padding: 10px 21px;}
+
+
+/*-----------------------------------------------
+@전기 요금제 > 요금제 소개 > 누진 요금제
+------------------------------------------------*/
+
+.bx-big-b .box-small.bx-s-e { width: 24%; padding-left: 30px;}
+.bx-big-b .box-small.bx-s-e h2 { font-size: 38px; font-weight: 700; }
+.bx-big-b .box-small.bx-s-e h2 > span { font-size: 14px; color: #666666;}
+
+.bx-big-b { background: #F9F9FA; border: 0; padding: 30px; border-radius: 10px;}
+.bx-big-b .box-small.bx-s-f span { font-size: 16px; font-weight: 400; position: relative; padding-left: 10px; display: inline-block; vertical-align: middle; margin: 0 5px;  }
+.bx-big-b .box-small.bx-s-f span::before { content: ''; display: block; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 4px; height: 4px; border-radius: 20px; background: #CCCCCC;}
+
+.bx-big-b .box-small.bx-s-g .btn-basic, 
+.bx-big-b .box-small.bx-s-g .btn { padding: 10px 40px;}
+
+.table.type-i th { text-align: left; font-size: 20px; font-weight: 500; }
+.table.type-i th > p > em { font-size: 12px; font-weight: 400; color: #888888;}
+.table.type-i td { font-size: 16px; padding: 12px 18px; }
+.table.type-i td:last-of-type { text-align: right;}
+
+
+
+/*-----------------------------------------------
+@전기 요금제 > 요금제 소개 > 계시 요금
+------------------------------------------------*/
+
+.table.type-j tr > th { font-size: 20px; font-weight: 500;}
+.table.type-j tr > td { vertical-align: middle; font-size: 16px;}
+
+
+
+/*-----------------------------------------------
+@전기 요금제 > 요금제 소개 > 계시 요금
+------------------------------------------------*/
+
+.table.type-k tr > th { font-size: 16px; padding: 15px 10px;}
+.table.type-k tr > td { padding: 15px 10px; font-size: 16px; }
+
+
+
+/*-----------------------------------------------
+@전기 요금제 > 사용량 분석
+------------------------------------------------*/
+
+.box-graph-wrap > h2 { font-size: 22px; font-weight: 500; }
+.box-graph-wrap > h2 > span { font-size: 16px; font-weight: 300; color: #888888; margin-left: 7px;}
+
+.graph-contain { }
+.graph-contain .graph-bg { position: relative; height: 30px; background-color: #EEEEEE; border-radius:500px; overflow: hidden;}
+.graph-contain .graph-bg .bar { position: absolute; top: 0; left: 0; height: 100%; background: -webkit-gradient(linear, left top, right top, from(#FFC550), to(#FF4D4F)); background: -webkit-linear-gradient(left, #FFC550, #FF4D4F); background: -o-linear-gradient(left, #FFC550, #FF4D4F); background: linear-gradient(to right, #FFC550, #FF4D4F); border-radius: 500px 0 0 500px; }
+.graph-text { text-align: center;  }
+
+/*사용량 추이 및 예상 요금*/
+.box-quantity-a { text-align: center; padding: 10px 0;}
+.box-quantity-a > p { font-size: 22px; }
+.box-quantity-a > p > span { font-size: 22px;}
+.box-quantity-a > h2 > p { line-height: 13px;}
+
+/*이번달 예상 사용량*/
+.box-text-a { padding: 0;}
+.box-text-a ul li { text-align: left;}
+.box-text-a ul li:last-child { text-align: right;}
+.box-text-a ul li::after { display: none;}
+.box-text-a ul > li > .text-info{ font-size: 20px; }
+.box-text-a ul > li > .text-info > strong { font-size: 20px; font-weight: 700;}
+.box-text-a ul > li > .text-info > span { margin-left: 15px;font-size: 20px; font-weight: 400;}
+.box-text-a ul > li > .text-info > em { font-size: 14px; color: #888888; font-weight: 300;}
+.box-quantity span { font-size: 16px; color: #666;}
+.box-text-a ul li .box-quantity p { display: inline; vertical-align: middle;}
+.box-text-a ul li .box-quantity p > span { font-size: 12px; color: #888}
+
+/*이웃비교*/
+.box-compare .graph-wrap { text-align: left;}
+.box-compare .text h1 { font-size: 20px; font-weight: 500; display: inline-block; vertical-align: middle; margin-left: 5px;}
+i.sad { background: url('../../images/plan/ico_sad.png')no-repeat center; width: 30px; height: 30px; display: inline-block; vertical-align: middle;}
+i.bad { background: url('../../images/plan/ico_bad.png')no-repeat center; width: 30px; height: 30px; display: inline-block; vertical-align: middle;}
+i.good { background: url('../../images/plan/ico_good.png')no-repeat center; width: 30px; height: 30px; display: inline-block; vertical-align: middle;}
+i.smile { background: url('../../images/plan/ico_smile.png')no-repeat center; width: 30px; height: 30px; display: inline-block; vertical-align: middle;}
+i.normal { background: url('../../images/plan/ico_normal.png')no-repeat center; width: 30px; height: 30px; display: inline-block; vertical-align: middle;}
+
+.box-compare .text > p { font-size: 16px; color: #888888; font-weight: 400; margin-top: 5px;}
+.box-compare > ul > li { padding: 0 30px; position: relative;}
+.box-compare > ul > li::after { content: ''; display: block; width: 1px; height: 100%; background: }
+
+.box-quantity.type-b {}
+
+/*-----------------------------------------------
+@전기 요금제 > 요금제 추천
+------------------------------------------------*/
+
+.box-item { border: 1px solid #DDDDDD; border-radius: 10px; padding: 25px 12px; text-align: center; margin: 0 auto; height: 534px; position: relative; overflow: hidden;}
+.box-item.on { border-color: #FFC550;}
+.box-item.on .recommend { color: #fff; background: #FFC550; letter-spacing: 0.3em; font-size: 13px; font-weight: 700; padding: 5px 50px; position: absolute; top: 8px; left: -38px; transform: rotate(-40deg);}
+.box-item .item-view { border-bottom: 1px solid #DDDDDD;}
+.box-item .item-view > h1 { font-size: 22px; font-weight: 500;}
+.box-item .item-view > p { padding: 20px 0; height: 130px; box-sizing: border-box;}
+.box-item .item-view .info-text > p { font-size: 15px; font-weight: 300; color: #666666;}
+.box-item .item-view .info-text > h2 { font-size: 28px; font-weight: 700; }
+.box-item .item-view .info-text > h2 > span { font-size: 18px; font-weight: 500; }
+
+.result { padding: 12px 0;}
+.result li { display: table; width: 100%; padding: 0 0 8px;}
+.result li > p { display: table-cell; text-align: left;}
+.result li > span { display: table-cell; text-align: right;}
+.result li > .minus { color: #E20000; font-weight: 500; }
+.result li > .plus { color: #0065D8; font-weight: 500; }
+
+.result-a { padding: 20px 0;}
+.result-a li > p { font-size: 12px; font-weight: 300;}
+.result-a li > span { font-size: 12px; font-weight: 300;}
+
+.box-item .btn-basic,
+.box-item .btn { padding: 10px 40px; position: absolute; left: 50%; bottom: 25px; transform: translateX(-50%);}
+
+
+
+/*-----------------------------------------------
+@전기 요금제 > 에너지 절약 컨설팅
+------------------------------------------------*/
+
+.box-cs-navi.type-a { max-width: 100%; padding: 20px 0;}
+.box-cs-navi.type-a a { cursor: default;}
+
+/*요금 절감 컨설팅*/
+.box-cs-navi.type-b ul li::after { background: url('../../images/plan/ico_next-arrow.png')no-repeat center; width: 75px; height: 25px; border-right: 0; top: 50%; right: -36px; transform: translateY(-50%);}
+.circle { background: url('../../images/plan/ico_circle-a.png')no-repeat center; width: 214px; height: 214px; position: relative; margin: auto;}
+.circle-b { background: url('../../images/plan/ico_circle-b.png')no-repeat center;}
+.circle .text { width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.circle .text p { font-size: 18px; font-weight: 400;}
+.circle .text p > strong { font-weight: 700;}
+.circle .text h2 { font-size: 27px; font-weight: 700; }
+.circle .text h2 > span { font-size: 17px; font-weight: 400;}
+
+.saving { padding-top: 89px;}
+.saving .table { text-align: center;}
+.saving .table tr > th { text-align: center; font-size: 20px; font-weight: 500;}
+.saving .table tr > td { font-size: 18px; font-weight: 400;}
+.saving > p { font-size: 20px; font-weight: 400; text-align: center;}
+.saving > p > strong { font-size: 22px; font-weight: 700; }
+
+/*-----------------------------------------------
+@마이 페이지
+------------------------------------------------*/
+
+.box-myinfo { max-width: 800px; margin: 0 auto; position: relative;}
+.box-myinfo h1 { font-size: 24px; font-weight: 700; }
+.box-myinfo h1 > span { font-size: 18px; font-weight: 700;}
+.box-myinfo p { font-size: 14px; font-weight: 300; color: #666; }
+.box-myinfo .btn { position: absolute; top: 0; right: 0;} 
+
+.box-cell.box-cell-a { max-width: 800px; margin: auto;}
+.box-cell.box-cell-a ul li { text-align: left; padding: 0 30px;}
+.box-cell.box-cell-a ul li:first-child { padding: 0 10px;}
+.box-cell.box-cell-a > ul > li::after { content: ''; display: block; height: 100%; position: absolute; top: 0; right: 0; border-right: 1px solid #ddd;}
+.box-cell.box-cell-a > ul > li:last-child::after { display: none;}
+.box-mypage {}
+.box-mypage h2 { font-size: 22px; font-weight: 400;}
+.box-mypage h1 { font-size: 34px; font-weight: 700; padding-top: 10px;}
+.box-mypage h1 > span { font-size: 20px; font-weight: 700;}
+.box-mypage .detail-view { display: inline-block; font-size: 14px; font-weight: 300; color: #666666; position: relative; }
+.box-mypage .detail-view::after { content: ''; display: block; position: absolute; top: 7px; right: -13px; background: url('../../images/common/ico_next.png')no-repeat center; width: 6px; height: 8px;}
+.red { color: #E20000 !important}
+
+.table.type-j tr > td { padding: 30px;}
+
+.box-cell-b { max-width: 100%;}
+.box-cell-b > ul > li { text-align: left; padding: 0 30px 10px;}
+.box-cell.box-cell-b > ul > li::after { content: ''; display: block; height: 100%; position: absolute; top: 0; right: 0; border-right: 1px solid #ddd;}
+.box-cell.box-cell-b > ul > li:last-child::after { display: none;}
+.box-cell-b h2 { text-decoration: underline; text-underline-position: under;}
+.relative { position: relative; }
+.absolute { position: absolute; }
+.box-mypage .absolute { top: 0; right: 14px;}
+.box-cell-b .box-mypage h3 { font-size: 16px; font-weight: 400;}
+
+.box-cell-small {}
+.box-cell-small ul li { text-align: center;}
+.box-cell-small ul li > h2 { font-size: 16px; font-weight: 500; text-decoration: none;}
+.box-cell-small ul li > span { font-size: 16px; font-weight: 400; display: inline-block;  }
+.box-cell-small ul li > span > em { font-size: 10px; font-weight: 400;}
+i.next-arrow { background: url('../../images/mypage/ico_arrow-next.png')no-repeat center; width: 20px; height: 13px; display: inline-block; vertical-align: middle; margin: 0 5px;}
+
+.box-mypage .select-wrap { max-width: 108px;}
+.box-cell-small ul li > span.bold { font-size: 30px; font-weight: 700;}
+.box-cell-small ul li > span.bold > em { font-size: 16px; font-weight: 700;}
+
+.box-cell-small-a ul > li { text-align: left;}
+.box-icon { position: relative; display: table;}
+.box-icon h2 { display: table-cell; vertical-align: middle;}
+.box-icon .box-icon-text { display: table-cell; vertical-align: middle; padding: 0 10px;}
+.box-icon .box-icon-text p { font-size: 14px; font-weight: 400;}
+.box-icon .box-icon-text span { font-size: 18px; font-weight: 700; }
+.box-icon .box-icon-text span em { font-size: 10px; font-weight: 400;}
+
+
+
+/*-----------------------------------------------
+@마이 페이지 > 내 요금제
+------------------------------------------------*/
+
+.box-cell.box-cell-c ul li { padding: 0 0 0 30px; position: relative;}
+.box-cell.box-cell-c ul li::after { content: ''; display: block; height: 100%; width: 1px; border-left: 1px solid #ddd; border-right: 0; position: absolute; top: 0; left: 0;}
+.box-cell.box-cell-c ul li:first-child::after { display: none; }
+.box-cell.box-cell-c > ul > li:last-child::after { display: none; }
+.box-mypage-a h1 { font-size: 28px; padding-top: 0;}
+.box-mypage-a p { font-size: 16px; font-weight: 400; color: #666666; }
+.box-mypage-a p > strong { margin-left: 5px; font-size: 16px; font-weight: 500; }
+
+.box-mypage-b h1 { font-size: 34px; padding-top: 0;}
+
+.box-mypage-c span { display: inline-block; font-size: 14px; font-weight: 300;}
+
+.table.type-k { text-align: center;}
+.table.type-k tr th { text-align: center; font-size: 18px; font-weight: 500;}
+
+.box-notice > h2 { font-size: 20px; font-weight: 500; }
+.box-notice > ul > li { text-align: left; position: relative; padding-left: 10px; font-size: 13px; font-weight: 400; padding-bottom: 5px;}
+.box-notice > ul > li::before { content: ''; display: block; width: 3px; height: 3px; background: #666666; position: absolute; top: 50%; left: 0; transform: translateY(-50%);}
+
+
+/*요금제 변경 이력 조회 팝업*/
+.popup.planChange .popup-contain .popup-inner .boxbn-btn .btn { width: 100%; display: block; padding: 12px 0; border-radius: 0; text-align: center;}
+.popup.planChange .popup-contain .popup-inner .absolute { bottom: 0; left: 0; width: 100%;}
+.popup.planChange .popup-contain .popup-inner .title-wrap h1 { font-size: 18px; font-weight: 700; }
+.popup-wrap .popup.planChange .popup-contain .popup-inner .contents { max-height: 185px; overflow-y: auto; padding: 0; margin-bottom: 48px;}
+.popup-wrap .popup .popup-contain .popup-inner .contents.scroll::-webkit-scrollbar { border: 1px solid #efefef; background: #F5F5F5; width: 12px;}
+.popup-wrap .popup .popup-contain .popup-inner .contents.scroll::-webkit-scrollbar-thumb { background: #ccc; }
+.popup-wrap .popup .popup-contain .popup-inner .contents.scroll::-webkit-scrollbar-button:vertical:increment { background: url('../../images/common/ico_overflow-bottom-arrow.png')no-repeat center 50%; width: 8px; height: 8px;}
+.popup-wrap .popup .popup-contain .popup-inner .contents.scroll::-webkit-scrollbar-button:vertical:decrement { background: url('../../images/common/ico_overflow-top-arrow.png')no-repeat center 50%; width: 8px; height: 8px;}
+
+/*요금제 변경 팝업*/
+.popup.change .popup-contain .popup-inner .title-wrap h1 { font-size: 18px; font-weight: 700;}
+.popup.change .popup-contain .popup-inner .contents { text-align: center; margin-bottom: 30px}
+.popup.change .popup-contain .popup-inner .contents .box-text { padding: 0; background: #fff;}
+.popup.change .popup-contain .popup-inner .contents .box-text > p { font-size: 15px; font-weight: 500;}
+.popup.change .popup-contain .popup-inner .contents .box-text > p > span { font-weight: 500; color: #008FFF; }
+.popup.change .popup-contain .popup-inner .boxbn-btn { top: auto; right: auto; bottom: 0; left: 0; font-size: 0; width: 100%;}
+.popup.change .popup-contain .popup-inner .boxbn-btn .btn { border-radius: 0; padding: 13px 0;}
+.popup.change .popup-contain .popup-inner .boxbn-btn .btn-gray { width: 40%; }
+.popup.change .popup-contain .popup-inner .boxbn-btn .btn-warning { width: 60%; }
+
+
+
+/*-----------------------------------------------
+@마이 페이지 > 에너지 사용 내역
+------------------------------------------------*/
+
+.box-mypage-e { padding: 0 30px;}
+.box-mypage-e > h2 > span { font-size: 13px; color: #666666; }
+.box-mypage-e > span { font-size: 14px; color: #666666; font-weight: 400;}
+
+.table.type-l tr th { text-align: left; }
+.table.type-l tr th > p { font-size:22px; font-weight: 500;}
+.table.type-l tr td { text-align: left; padding: 15px 0 15px 40px; font-size: 18px; font-weight: 400;}
+.table.type-l tr td > h2 { font-size: 28px; font-weight: 700;}
+.table.type-l tr td > h2 > em { font-size: 14px; font-weight: 700;}
+.table.type-l tr td > span { font-size: 16px; font-weight: 400;}
+
+.table.type-l-a { min-height: 256px; }
+.table.type-l-a tr td { padding: 15px 0; text-align: center;}
+
+
+
+/*-----------------------------------------------
+@마이 페이지 > 태양광 발전량 내역
+------------------------------------------------*/
+
+.box-cell.box-cell-d ul li { padding: 0 10px 0 30px;}
+
+.box-status > div { position: relative;}
+.box-status > div::after { content: ''; display: block; background: url('../../images/mypage/ico_next-arrow.png')no-repeat center; width: 45px; height: 25px; position: absolute; top: 50%; right: 0; transform: translateY(-50%);}
+.box-status > div:last-child::after { display: none;}
+.box-cell-e { max-width: 100%;}
+.box-cell-e ul li { position: relative;}
+.box-cell-e ul li:before { content: ''; display: block; width: 1px; height: 100%; background: #CCCCCC; position: absolute; top: 50%; right: 0; transform: translateY(-50%);}
+.box-cell-e ul li:last-child::before { display: none;}
+.box-circle { width: 160px; height: 160px; background: linear-gradient(to right, #FFDA63, #FFAA00); border-radius: 500px; position: relative;}
+.box-circle-sub { width: 140px; height: 140px; border-radius: 500px; background: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.box-circle-contents { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center;}
+.box-circle-contents h2 { font-size: 18px !important; font-weight: 500; padding: 0 !important; }
+.box-circle-contents h1 { font-size: 24px; font-weight: 700; }
+.box-circle-contents h1 > span { font-size: 13px; font-weight: 400;}
+.box-circle-contents > span { font-size: 10px; color: #888; font-weight: 400; }
+
+.box-circle-a { background: #fff; border: 3px solid #000; }
+.box-circle-a .box-circle-sub { background: #000;}
+.box-circle-a .box-circle-contents { }
+.box-circle-a .box-circle-contents h2 { color: #fff; }
+.box-circle-a .box-circle-contents h1 { color: #fff; }
+.box-circle-a .box-circle-contents h1 > span { color: #fff; }
+
+.line { border-bottom: 2px solid #000;}
+
+/*-----------------------------------------------
+@마이 페이지 > 공동체 태양광 내역
+------------------------------------------------*/
+
+.sub-title-a { font-size: 24px; font-weight: 500; border-bottom: 1px solid #333333; padding-bottom: 15px;}
+
+.calender-a { padding: 15px 30px; display: inline-block; vertical-align: middle;}
+.calender-a > p { font-size: 18px; font-weight: 400; display: inline-block; vertical-align: middle; margin-right: 10px;} 
+.calender-a .boxbn-btn { display: inline-block; vertical-align: middle;}
+.calender-a .boxbn-btn .btn { padding: 7px 12px;}
+
+.table.type-m th { padding: 12px; font-size: 16px; font-weight: 500;}
+.table.type-m td { padding: 12px; font-size: 16px; font-weight: 400;}
+.yellow { color: #FDB930;}
+.gray { color: #888888;}
+
+
+
+/*-----------------------------------------------
+@마이 페이지 > 전력거래 내역
+------------------------------------------------*/
+
+.box-mypage-d .box-small { text-align: center; display: block;}
+.box-mypage-d .box-small h1 { padding: 0; width: 80px; height: 80px; display: inline-block; vertical-align: middle;}
+.box-mypage-d .box-small h2 { padding: 0 20px; display: inline-block; vertical-align: top; }
+.box-mypage-d .box-small h2 > p { font-size: 20px; font-weight: 400;}
+.box-mypage-d .box-small h2 > span { font-size: 34px; font-weight: 700; }
+.box-mypage-d .box-small h2 > span > em { font-size: 20px; font-weight: 700;}
+
+.tab-content.my-energy { border: 0; padding: 30px 30px 0;}
+
+
+
+/*-----------------------------------------------
+@마이 페이지 > 내 계정관리
+------------------------------------------------*/
+
+.blue { color: #0065D8;}
+
+.my-info { padding: 0 24px; }
+.my-info > h1 { border-bottom: 2px solid #999;}
+.my-info > .table { max-width: 90%; margin: 20px auto; }
+.my-info > .table tr th { vertical-align: middle; border: 0; font-weight: 500;}
+.my-info > .table tr td { border: 0; }
+.my-info .info-table .table-input .sub-text { margin-left: 10px;}
+.my-info .info-table .table-input input { width: 300px; font-weight: 400;}
+.my-info .info-table .table-input .btn-info { margin-left: 10px;}
+.my-info .btn-wrap { border-top: 1px solid #E5E5E5; padding-top: 25px;}
+
+
+
+/*-----------------------------------------------
+@마이 페이지 > 회원탈퇴
+------------------------------------------------*/
+
+.my_withdrawal > h1 { padding: 0;}
+.my_withdrawal > h3 { font-size: 18px; font-weight: 400; color: #666;}
+
+.my_withdrawal .box-big .box-notice > h2 { padding-bottom: 10px;}
+.my_withdrawal .box-big .box-notice p { line-height: 23px;}
+
+.my_withdrawal .boxbn-btn .btn { padding: 10px 45px;}
+
+
+/*-----------------------------------------------
+@마이 페이지 > 에너지 절감
+------------------------------------------------*/
+
+.my-energySaving > h2 { font-size: 22px; font-weight: 500; }
+.my-energySaving .box-mypage-b p { color: #000;}
+
+.bx-big-c { background: #fff; border: 1px solid #CCCCCC;}
+.bx-big-c .box-mypage-a p { display: inline-block; vertical-align: middle;}
+.bx-big-c .box-mypage-a h1 { display: inline-block; vertical-align: middle;}
+.box-cell-f .btn { padding: 10px 50px;}
+
+.table.type-n { border-top: 2px solid #333333;}
+.table.type-n tr td { font-size: 20px; font-weight: 400; padding: 18px 0;}
+.table.type-n tr td:first-of-type { text-align: center;}
+.table.type-n tr td:nth-of-type(2) { font-size: 17px;}
+.table.type-n tr td > h2 { font-size: 22px; font-weight: 700; display: inline-block; vertical-align: middle; margin-left: 49px; }
+.table.type-n tr td > h2 > span { font-size: 16px; font-weight: 700; }
+.table.type-n .table-input input { width: 70%;}
+.table.type-n .btn { padding: 3px 14px; margin-right: 8px;}
+
+
+/*-----------------------------------------------
+@마이 페이지 > 에너지 절감(계시요금제일 경우)
+------------------------------------------------*/
+
+.table-energy-saving .box-cs-navi ul li { font-size: 16px; font-weight: 400;}
+.table-energy-saving .box-cs-navi.type-b ul li::after { background: url('../../images/mypage/ico_arrow-next-2.png')no-repeat center; width: 30px; height: 17px; right: -20px;}
+
+.table-energy-saving .table { border-bottom: 1px solid #ddd;}
+.table-energy-saving .table tr > td { padding: 18px; vertical-align: middle; border-bottom: 0;}
+.table-energy-saving .table tr > td:last-of-type { text-align: right; }
+.table-energy-saving .table tr > td:last-of-type h3 { font-size: 30px; font-weight: 700;}
+.table-energy-saving .table tr > td:last-of-type h3 > span { font-size: 20px; font-weight: 700;}
+
+
+.btn-some { display: inline-block; background: #FFC550; color: #fff; width: 120px; height: 30px; text-align: center; line-height: 31px; border-radius: 500px; font-size: 16px; font-weight: 400;}
+.btn-some-a { background: #FFB113;}
+.btn-some-b { background: #FF9D47;}
+
+/*-----------------------------------------------
+@마이 페이지 > 내 고지서
+------------------------------------------------*/
+
+.bill-info-contents { border-top: 2px solid #000; border-bottom: 2px solid #000;}
+
+.sub-bill-title { border: 0}
+
+.box-bill .table { width: 100%; margin-bottom: 0;}
+.box-bill .table tr > th { vertical-align: top; padding: 12px 20px;}
+.box-bill .table tr > td { vertical-align: top; padding: 12px 20px 25px; }
+
+.my-bill-title { display: table; width: 100%;}
+.my-bill-title > p { display: table-cell; vertical-align: top; font-size: 18px; font-weight: 400; text-align: left;}
+.my-bill-title > h2 { display: table-cell; vertical-align: top; font-size: 20px; font-weight: 700; line-height: 1.2em; text-align: right;}
+.my-bill-title > h2 > span { font-size: 20px; font-weight: 700;}
+
+.black { color: #000 !important;}
+.box-bill .table-sub { width: 100%;}
+.box-bill .table-sub tr > td { font-size: 15px; color: #666666; font-weight: 400; text-align: right; padding: 4px 0;}
+.box-bill .table-sub tr > td:first-of-type { text-align: left;}
+.none-border { border-bottom: 0 !important; padding: 12px 20px !important; vertical-align: middle !important;}
+
+.box-bill-b .table:last-of-type tr > td { border-bottom: 0; }
+.box-bill-b .table:first-of-type tr > td { padding-bottom: 4px;}
+
+.my-bill-average { text-align: right; padding: 30px 0}
+.my-bill-average h2 { font-size: 34px; font-weight: 700;}
+
+.banner-wrap { position: relative; }
+.banner-wrap p { font-size: 21px; font-weight: 700; position: absolute; top: 47%; left: 50%;}
+.banner-wrap p > span { font-weight: 500;}
+.banner-wrap a { display: inline-block; padding: 5px 10px; background: #ff7700; color: #fff; border-radius: 100px; position: absolute; top: 47%; right: 10%; font-size: 13px;}
+
+
+/*-----------------------------------------------
+@전력거래 > 에너지 현황
+------------------------------------------------*/
+
+.box-energy > ul > li { display: table;}
+.box-energy > ul > li > p { display: table-cell; vertical-align: middle; font-size: 20px; font-weight: 500; }
+.box-energy > ul > li > h2 { display: table-cell; vertical-align: middle; font-size: 34px; font-weight: 700;}
+.box-energy > ul > li > h2 > span { font-size: 20px; font-weight: 700;}
+
+.table.table-energy { border-top: 1px solid #000;}
+.table.table-energy tr > th { padding: 12px 60px}
+.table.table-energy tr > th > .text { display: table; width: 100%;}
+.table.table-energy tr > th > .text p { font-size: 20px; font-weight: 400; display: table-cell;}
+.table.table-energy tr > th > .text p > span { font-size:13px; font-weight: 400; color: #888888; }
+.table.table-energy tr > th > .text h2 { font-size: 30px; font-weight: 700; display: table-cell; text-align: right;}
+.table.table-energy tr > th > .text h2 > span { font-size: 16px; font-weight: 700;}
+.table.table-energy tr > td:last-of-type { border: 0;}
+
+.box-cs-navi.type-c > ul li p { font-size: 16px; color: #000; padding-top: 10px}
+.box-cs-navi.type-c > ul li h3 { font-size: 28px; font-weight: 700;}
+.box-cs-navi.type-c > ul li h3 span { font-size: 18px; font-weight: 700;}
+
+.table-energy.table-energy-a tr > td { padding: 40px 0;}
+.table-energy.table-energy-a tr > td:last-of-type { border-bottom: 1px solid #ddd; }
+.table-energy.table-energy-a .box-mypage-d .box-small h1 { width: 60px; height: 60px;}
+.table-energy.table-energy-a .box-mypage-d .box-small h2 > p { font-size: 16px; font-weight: 400;}
+.table-energy.table-energy-a .box-mypage-d .box-small h2 > span { font-size: 28px; }
+.table-energy.table-energy-a .box-mypage-d .box-small h2 > span > em { font-size: 18px;}
+
+.my-energy.tab-energy {}
+
+
+
+/*-----------------------------------------------
+@전력거래 > 에너지 구매
+------------------------------------------------*/
+
+.table.table-buy tr td { vertical-align: middle; height: 43px;  }
+.table tr.sold-out td { background: #F9F9F9;}
+
+
+/*구매하기 팝업*/
+.popup.buy .popup-contain .popup-inner .contents { margin: 0 auto 45px auto;}
+.popup.buy .table { max-width: 90%; margin: auto;}
+.popup.buy .table tr > th { border-bottom: 0; font-size: 15px; font-weight: 400;}
+.popup.buy .table tr > td { border-bottom: 0; text-align: left; font-size: 15px; font-weight: 400;}
+
+
+
+/*-----------------------------------------------
+@서비스 이용약관
+------------------------------------------------*/
+
+.text-contain { padding: 80px 0; max-width: 1000px; margin: 0 auto;}
+.text-title { padding-bottom: 40px; border-bottom: 1px solid #CCCCCC}
+.text-title h1 { font-size: 28px; font-weight: 700; text-align: center; }
+
+.box-contents-item { padding: 25px 0 0; word-break: keep-all;}
+.box-contents-item h2 { font-size: 24px; font-weight: 700; padding-bottom: 14px;}
+.box-contents-item p { font-size: 15px; font-weight: 400; padding-bottom: 7px;}
+
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------
+@모바일
+--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 1400px) {
+    html, body { min-width:100% }
+
+	.wrapper-md { max-width: 100%; overflow: hidden;}
+	.wrapper-sm { max-width: 100%; overflow: hidden;}
+	.wrapper-xs { max-width: 100%; overflow: hidden;}
+	.wrapper-xxs { max-width: 100%; overflow: hidden;}
+	.wrapper-xxxs { max-width: 100%; overflow: hidden;}
+	
+	.header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 50; background: #fff;}
+	.header h1 { line-height: 12px; width: 40%; margin-left: 15px; padding: 15px 0 0;}
+	.header h1 > a { display: block; padding-left: 30px; font-size: 12px;}
+	.header h1 > a::before { width: 25px; height: 23px; }
+
+	.header .mbStat { top: 0; right: 60px;}
+	.mbStat a { padding: 20px;}
+	.mbStat .btn-bell { margin-right: 0;}
+	.mbStat .btn-bell .count { top: 4px; right: 0; width: 16px; height: 16px; line-height: 16px; font-size: 10px;}
+	.mbStat .btn-logout { text-indent: -9999px; background: url('../../images/common/ico_logout.png')no-repeat center;  width: 21px; height: 21px;}
+	.mbStat .login-text { padding: 0; padding-right: 20px;}
+	
+	.header .gnb { margin: 0; width: 100%; margin-top: 40px; }
+	.header .gnb > ul { display: none;}
+	
+	.m_hamberger-box { position: absolute; top: 0; right: 0; }
+	.hamberger { display: block; width: 40px; height: 40px; background: url('../../images/mobile/ico_hamberger.png')no-repeat center; background-color: #FFC550; transition: 0.3s all;} 	
+	.close { display: none; width: 40px; height: 40px; background: url('../../images/mobile/ico_close.png')no-repeat center; background-color: #FFC550; z-index: 2; } 
+	.m_hamberger-box.show .hamberger { display: none;}
+	.m_hamberger-box.show .close { display: block;}
+
+	.snb { display: block; position: fixed; top: 40px; border-bottom: 0;}
+	.header .snb .wrapper-md > ul { margin-left: 0; position: fixed; top: 41px; right: -100%; bottom: 0; width: 100%; background: #fff; padding: 0; min-width: 0; transition: 0.6s all}
+	.header .snb .wrapper-md > ul > li { display: block;  border-bottom: 1px solid #ccc; width: 100%;}
+	.header .snb .wrapper-md > ul > li:nth-child(3) { margin-left: 0;}
+	.header .snb .wrapper-md > ul > li > a { display: block; font-weight: 500; padding: 20px; position: relative;}
+	.header .snb .wrapper-md > ul > li > a::after { content: ''; display: block; position: absolute; top: 20px; right: 20px; background: url('../../images/mobile/ico_right_arrow2.png')no-repeat center; width: 20px; height: 20px;}
+	.header .snb .wrapper-md > ul > li > ul { background: #F2F3F5; padding: 0; height: 0; opacity: 0; overflow: hidden; transition: 0.6s all;}
+	.header .snb .wrapper-md > ul > li li {display: block;}
+	.header .snb .wrapper-md > ul > li li:last-child { padding-bottom: 0;}
+	.header .snb .wrapper-md .heads-sub ul { background: #F9F9FA; margin: 0 -25px; padding: 0 30px !important;}
+
+	/*알림팝업*/
+	.pop-type-2 { width: 100%;}
+	.popup-wrap #alarmPopup { top: 50px; right: 15px;}
+
+	/*알림설정 팝업*/
+	.popup-wrap #settingPopup { top: 50px;}
+
+	body.hidden { overflow: hidden;}
+	.snb.on .wrapper-md > ul { right: 0;}
+	.header .snb .wrapper-md > ul > li.on > a::after { transform: rotate(-180deg);}
+	.header .snb .wrapper-md > ul > li.on > ul { height: auto; opacity: 1; padding: 0px 25px;}
+	.heads-sub.on { display: block;}
+	
+	.maincont { padding: 51px 0 20px;}
+
+	.boxbn-subtitle {font-size: 1.1vw;}
+	.boxbn-title h2 { font-size: 1.8vw;}
+	.boxbn-description { font-size: 1.1vw; line-height: 1.5vw;}
+
+    .boxbn-btn .btn { text-align:left; font-size: 1.1vw; }
+    .boxbn, .maincont .boxlink { height: 30.2vw; }
+    .maincont .boxlink a { padding: 2.5vw; }
+	.boxbn .bg-image { text-align: right;}
+    .boxbn .bg-image img { max-width: 59%; }
+    .maincont .imgbn { height:auto }
+    .box-b { }
+	.box-c { height: 14.5vw; }
+	.box-d {  height: 14.5vw; }
+	.box-e { height: 23vw;}
+	.maincont .boxlink { height: 10.85vw;}
+	.maincont .imgbn { height: 10.85vw;}
+    .maincont .imgbn img { }
+	.maincont .boxbn .boxbn-btn .btn { padding: 0.7vw 1vw; padding-right: 3vw; }
+
+	.boxbbs li a { padding: 0.45vw; font-size: 1.1vw;}
+	.boxlink .icon { width: 6.5vw; height: 6.5vw;}
+	.boxlink h3 { font-size: 1.2vw; }
+	.boxlink p { }
+	.boxcs-a h2 { display: inline-block; vertical-align: middle; font-size: 19px; padding-left: 32px;}
+	.boxcs-a h2::before { width: 25px; height: 20px;}
+	.boxcs-a h3 { display: inline-block; vertical-align: middle; padding-top: 0; font-size: 20px;}
+	.boxcs-b p { font-size: 12.5px; line-height: 14px;}
+	.boxcs-c { text-align: left;}
+	.boxcs-c ul li { font-size: 13px;}
+
+	.boxcs-c ul li a { font-size: 12.5px;}
+
+	/*로그인후 모달*/
+	.modal-content { max-width: 90%; margin: 6vw auto; overflow: hidden;}
+	.modal .close-btn { width: 1.6vw; height: 1.6vw;}
+	.modal .contents-wrap { padding: 2.5vw 0;}
+	.modal .contents-wrap > ul li { padding: 1.1vw 2.5vw; }
+	.modal .contents-wrap > ul li:after { }
+	.box-myinfo .btn { padding: 3px 1vw; font-size: 1.2vw;}
+	.box-myinfo-b { height: auto;}
+	.box-myinfo-b h3 { font-size: 12px;}
+	.table.table-pop { margin-top: 10px;}
+	.table.table-pop th p { font-size: 1vw;}
+	.table.table-pop td { font-size: 1.15vw;}
+	.table.table-pop td span { font-size: 2.1vw;}
+	.table.table-pop td span em { font-size: 1.3vw;}
+	.point-gray { width: 125px; font-size: 12px !important;}
+
+
+	/*-----------------------------------------------
+	@로그인
+	------------------------------------------------*/
+	
+	.box-form { padding: 18vw 0;}
+	.box-form form > h1 { font-size: 25px;}
+	.table.table-login th, 
+	.table.table-login td { padding: 12px 10px; font-size: 13px;}
+	.table.table-login th { font-size: 13px; }
+	.box-form .boxbn-btn .btn { padding: 13px 0;}
+
+	/*아이디찾기 팝업*/
+	.popup-wrap .popup.serach-id .tab-content { padding: 0;}
+	.popup-wrap .popup.serach-id .tabs ul li { padding: 12px 0;}
+	.popup-wrap .popup.serach-id .tabs ul li p { font-size: 15px;}
+	.table.table-login td input { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@임시비밀번호 메일 양식
+	------------------------------------------------*/
+	
+	.contents-mail .form-wrap { max-width: 769px; padding: 0; margin: 50px auto 20px auto; padding: 20px;}
+	.contents-mail .form-wrap .title h1 { font-size: 23px;}
+	.contents-mail .form-wrap .title h2 { font-size: 18px;}
+
+	.contents-mail .form-wrap .content-wrap { padding: 30px 0 0;}
+	.table.table-email th, .table.table-email td { display: block; border: 0;}
+	.table.table-email td { text-align: center; font-size: 14px;}
+
+	.contents-mail .form-wrap .content-wrap .text p { font-size: 13px; padding-bottom: 5px;}
+	
+	.contents-mail .form-wrap .content-wrap .boxbn-btn { padding: 20px 0 0;}
+	.contents-mail .form-wrap .content-wrap .btn { display: block; margin-right: 0; margin-bottom: 10px; text-align: center; font-size: 14px;}
+
+	
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개
+	------------------------------------------------*/
+
+	.contents { padding-top: 41px;}
+
+	.box-subject { margin: 20px 0 0 0; overflow: hidden;}
+	
+	.box-left { display: none;}
+	.box-right { width: 100% !important; border-left: 0; padding: 25px 0; padding-bottom: 35px;}
+	.bx-contents { padding: 0 15px;}
+	.sub-title { padding: 0 0 14px;}
+	.sub-title h1 { font-size: 19px;}
+	.sub-title p { font-size: 13px; padding-right: 0;}
+
+	.box-big .box-small.bx-s-a { width: 50%;}
+
+	.box-big .box-xsmall h1 { padding: 13px; }
+	.box-big .box-xsmall h2 { padding: 0 15px; width: calc(100% - 26%);}
+	.box-big .box-xsmall h2 span {}
+	.box-big .box-xsmall p { }
+
+	.box-big .box-small.bx-s-b { padding: 0 13px; text-align: center; width: 40%;}
+	.box-big .box-small.bx-s-b p { font-size: 14px; display: block;}
+	.box-big .box-small.bx-s-b h2 { font-size: 27px; display: block;}
+
+	.box-big .box-small.bx-s-c { }
+
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개 > 누진제 요금
+	------------------------------------------------*/
+
+	.bx-big-b .box-small.bx-s-e { width: auto; padding-left: 0;}
+	.bx-big-b .box-small.bx-s-e h2 { font-size: 29px; text-align: center;}
+	.bx-big-b .box-small.bx-s-f span { }
+	.box-small.bx-s-g { text-align: right;}
+	.bx-big-b .box-small.bx-s-g .btn-basic, 
+	.bx-big-b .box-small.bx-s-g .btn { }
+
+	.boxinfo-contents > h1 { padding-bottom: 10px; font-size: 19px;}
+	
+	.table.type-i th > p { font-size: 16px;}
+	.table.type-i td { font-size: 14px;}
+	
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개 > 계시 요금
+	------------------------------------------------*/
+
+	.table.table-bg-a tr > th { font-size: 14px;}
+	.table.table-bg-a tr > td { font-size: 11px; padding: 8px 4px; }
+
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개 > 전력피크요금
+	------------------------------------------------*/
+
+	.table.type-k tr th { font-size: 1.4vw; padding: 0.7vw 2px; vertical-align: middle;}
+	.table.type-k tr > td { padding: 7px 2px; font-size: 13px; vertical-align: middle;}
+
+	/*-----------------------------------------------
+	@전기 요금제 > 사용량 분석
+	------------------------------------------------*/
+	
+	.box-graph-wrap > h2 { font-size: 19px;}
+	.box-graph-wrap > h2 > span { font-size: 14px;}
+	.graph-contain .graph-bg { height: 15px;}
+	
+	.box-text ul { padding: 0;}
+	.box-text ul li .text-info { font-size: 14px; text-align: center;}
+	.box-text ul li .text-info span { font-size: 13px; text-align: center; display: block;}
+	.box-text ul li .text-info strong { font-size: 2.2vw; display: inline-block;}
+	.box-text ul li .text-info em { font-size: 13px;}
+
+	.box-text-a ul li .text-info strong { font-size: 15px;}
+	.box-text ul li .text-info span { display: inline-block;}
+	
+	.table.type-b { margin: 3vw 0 3vw;}
+	.table.type-b tr td { padding: 0;}
+	.box-quantity h2 { font-size: 2vw; text-align: center;}
+	.box-quantity span { font-size: 1.2vw;}
+	.box-quantity em { margin: 0 0 0 9px; font-size: 12px;}
+	.box-quantity-a > p { font-size: 1.4vw;}
+	.box-quantity-a > p > span { font-size: 1.4vw;}
+
+	.boxinfo-contents-a > h1 { font-size: 2vw;}
+	
+	.box-text-a-a ul li { padding: 10px;}
+	.box-text-a-a ul li:first-child { padding-bottom: 0;}
+	.box-text-a-a ul li p strong { font-size: 14px; }
+	.box-text-a-a ul > li > p > span {display: block; margin-left: 0; margin-top: 7px;}
+
+	.box-compare .text h1 { font-size: 15px;}
+	i.sad, 
+	i.smile,
+	i.normal,
+	i.good,
+	i.bad	{ width: 25px; height: 25px; background-size: 100%;}
+	.box-compare .text > p { font-size: 13px;}
+	.box-gr-info { padding: 15px 0;}
+
+	.box-quantity > p { }
+	.box-quantity > p > span { }
+
+	.box-quantity-a h2 { }
+
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 추천
+	------------------------------------------------*/
+	
+	.box-item { padding: 15px 12px; height: 524px;}
+	.box-item .item-view .info-text > h2 { font-size: 2.1vw;}
+
+	.box-item.on .recommend { top: 4px; left: -41px;}
+
+	.result li > p { font-size: 12px;}
+	.result li > .minus { font-size: 12px;}
+
+	/*-----------------------------------------------
+	@전기 요금제 > 에너지 절약 컨설팅
+	------------------------------------------------*/
+
+	.box-cs-navi.type-a { padding: 0 0 20px;}
+	
+	.circle { width: 15vw; height: 15vw; background-size: 100%;}
+	.box-cs-navi.type-b ul li::after { width: 5.5vw; height: 5.5vw; background-size: 100%; right: -5%}
+	.circle .text p { font-size: 12px;}
+	.circle .text h2 { font-size: 19px;}
+
+	.saving { padding-top: 6vw;}
+	.saving .table tr > th { font-size: 16px;}
+	.saving .table tr > td { font-size: 13px;}
+	.saving > p { font-size: 14px; margin-top: 20px;}
+	.saving > p > strong { font-size: 16px;}
+
+
+	/*---------------------------------------------------------------------
+	@태양광 발전량 분석 > 우리집 태양광 > 우리집 태양광 소개
+	-----------------------------------------------------------------------*/
+	
+	.boxct-a p { text-align: left;}
+	.boxct-a p > img { width: 100%;}
+	.boxct .boxct-b { padding: 0;}
+	.boxct .boxct-b h2 { font-size: 19px;}
+	.boxct .boxct-b p { font-size: 12px;}
+
+	/*---------------------------------------------------------------------
+	@태양광 발전량 분석 > 우리집 태양광 > 설치 시뮬레이션
+	-----------------------------------------------------------------------*/
+
+	.boxinfo ul { padding-top: 12px;}
+	.boxinfo ul li { font-size: 12px;}
+	.boxinfo ul li::before { width: 3px; height: 3px; top: 8px;}
+	
+	.info-table .table-input input { font-size: 14px;}
+	.table.simulation tr th { font-size: 13px; vertical-align: middle;}
+	.table.simulation tr td { vertical-align: middle;}
+	.sub-text { margin-left: 0;}
+	
+	.btn-wrap { padding: 10px 0;}
+	.btn-wrap .btn { margin: auto; font-size: 13px; text-align: center; display: inline-block;}
+	
+	.table.type-a tr td { text-align: center;}
+	.table.type-a p { font-size: 14px;}
+	.table.type-a span { font-size: 13px; }
+	.table.type-a span em {  font-size: 12px;}
+
+	/*---------------------------------------------------------------------
+	@태양광 발전량 분석 > 공용 태양광 > 발전량 현황
+	-----------------------------------------------------------------------*/
+
+	.boxinfo h1 { font-size: 20px;}
+
+	.tabs ul li { font-size: 13px;}
+	.tab-content { padding: 13px 13px 0;}
+
+	
+	.table.table-info.type-b.type-b-a { margin: 3vw 0 2vw;}
+
+	.box-quantity.type-a h2 { font-size: 16px; }
+
+
+	/*---------------------------------------------------------------------
+	@국민DR > 국민 DR 참여현황
+	-----------------------------------------------------------------------*/
+
+	.box-calender .calender { margin-right: 0;}
+	.calender input { width: 80px; height: 30px; font-size: 13px; padding: 6px; }
+	.calender .ui-datepicker-trigger { width: 19px; height: 19px; background-size: 100%;}
+	.box-calender .box-lookup { padding-left: 7px;}
+	.box-calender .box-lookup .select-wrap span { font-size: 13px;}
+	.box-calender .box-lookup .select-wrap .form-control.select-a { width: 58px; height: 30px; padding: 3px 6px; font-size: 13px;}
+	.box-calender .box-lookup .select-wrap .boxbn-btn .btn { font-size: 11px; padding: 6px 12px;}
+
+	.table-bg.type-a tr th { padding: 10px 5px; font-size: 13px;}
+	.table-bg.type-a tr td { font-size: 12px;}
+
+
+	/*---------------------------------------------------------------------
+	@국민DR > 기기현황
+	-----------------------------------------------------------------------*/
+	
+	.tooltip { top: 10px;}
+	.box-text-c ul li .text-info strong { font-size: 23px;}
+
+	.tooltip .tooltiptext { width: 250px; font-size: 12px !important;}
+
+	.device > .btn { font-size: 12px;}
+	
+	.box-power { height: 155.97px;}
+	.box-power .box-img h3 { font-size: 17px;}
+	.box-power .box-img span { font-size: 14px;}
+
+	/*디바이스 등록 팝업*/
+	.popup.change .popup-contain .popup-inner .boxbn-btn .btn { display: inline-block; text-align: center; font-size: 14px;} 
+	.popup.change .popup-contain .popup-inner .contents { padding: 7px 13px; max-width: 100%;}
+	.popup.device .table tr > th, 
+	.popup.device .table tr > td { font-size: 14px; vertical-align: middle; padding: 5px;}
+	.popup.device .table .form-control { font-size: 12px; padding: 6px;}
+	.popup.device .table .input { font-size: 12px; padding: 6px;}
+
+
+	/*---------------------------------------------------------------------
+	@전력거래 > 에너지 현황
+	-----------------------------------------------------------------------*/
+
+	.box-energy > ul > li > p { font-size: 15px; font-weight: 400;}
+	.box-energy > ul > li > h2 { font-size: 2.5vw; }
+
+	.table.table-energy tr > th { padding: 10px;}
+	.table.table-energy tr > th > .text p { font-size: 15px;}
+	.table.table-energy tr > th > .text h2 { font-size: 23px;}
+	
+	.box-cs-navi.type-c { padding-bottom: 0;}
+	.box-cs-navi.type-c > ul li { padding: 10px;}
+	.box-cs-navi.type-c > ul li p { font-size: 13px; height: 46px;}
+	.box-cs-navi.type-c > ul li h3 { font-size: 23px;}
+	.box-cs-navi.type-c > ul li h3 span { font-size: 14px;}
+	
+	.table-energy.table-energy-a tr > td { padding: 15px 0;}
+	.table-energy.table-energy-a .box-mypage-d .box-small h2 > p { font-size: 13px; padding-top: 10px; margin-top: 0;}
+	.table-energy.table-energy-a .box-mypage-d .box-small h2 > span { font-size: 23px;}
+
+	.tabs.tabs-width ul li { width: 50%; }
+
+	.calender-a { padding: 15px 0;}
+	.calender-a > p { font-size: 14px;}
+	.calender-a .boxbn-btn .btn { padding: 5px 8px; height: 30px; box-sizing: border-box;}
+	
+	.my-energy.tab-energy { padding: 20px 0;}
+	.my-energy.tab-energy .table tr th { font-size: 13px; vertical-align: middle;}
+	.my-energy.tab-energy .table tr td { font-size: 12px; vertical-align: middle; font-weight: 300;}
+
+	/*---------------------------------------------------------------------
+	@전력거래 > 에너지 구매
+	-----------------------------------------------------------------------*/
+
+	.table.table-buy tr th { font-size: 13px;}
+	.table.table-buy tr td { font-size: 11px; padding: 0;}
+
+	/*구매하기 팝업*/
+	.popup.buy .popup-contain .popup-inner .contents { padding: 15px 10px;}
+	.popup.buy .table { max-width: 100%;}
+	.popup.buy .table tr > th { font-size: 14px;}
+
+
+
+	/*-----------------------------------------------
+	@고객센터
+	------------------------------------------------*/
+	
+	.search .input-wrap { max-width: 400px;}
+	.search .input-wrap .input { width: 80%; height: 40px; font-size: 13px; padding: 0 10px; font-weight: 300;}
+	.search .input-wrap .input::placeholder { font-weight: 300;}
+	.search .boxbn-btn { width: 20%;}
+	.search .boxbn-btn .btn { padding: 11px; width: 100%; text-align: center; font-size: 12px;}
+
+	.toggle-wrap .title-wrap { padding: 14px;}
+	.toggle-wrap .title-wrap p { font-size: 14px; font-weight: 300; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 24px;}
+	.toggle-wrap .title-wrap p.question::before { font-size: 19px;}
+	.ico-dw { width: 14px; height: 8px; background-size: 100%; right: 7px;}
+	.toggle-wrap .sub-contents p { font-size: 12px; font-weight: 300;}
+	
+	.box-cs-navi > ul li a h3 { font-size: 16px;}
+	.box-cs-navi > ul li a p { font-size: 12px;}
+
+	
+	/*-----------------------------------------------
+	@고객센터 > 공지사항
+	------------------------------------------------*/
+	
+	.table.type-c tr th { font-size: 13px; padding: 8px;}
+	.table.type-c tr td { padding: 12px 2px; font-size: 13px; vertical-align: middle;}
+	.table.type-c tr td:last-of-type { text-align: center;}
+	.table.type-c tr td a { width: auto; font-size: 13px;}
+
+	.pagination > li > a, .pagination > li > span { padding: 6px 10px;}
+
+	/*.toggle-wrap .sub-contents { padding: 16px 30px;}*/
+
+
+	/*-----------------------------------------------
+	@고객센터 > 공지사항 > 상세페이지
+	------------------------------------------------*/
+
+	.table.type-d tr th { font-size: 14px;}
+	.table.type-d tr td { padding: 11px;}
+	.table.type-d .date { font-size: 12px;}
+	.table.type-d .contents { font-size: 12px;}
+	.table.type-e tr td:nth-of-type(3) { font-size: 12px;}
+	
+	.table.type-e tr td { vertical-align: middle;}
+	.table.type-e tr td:first-of-type { padding: 8px 5px;}
+	.notice-btn .btn { display: inline-block;}
+
+
+	/*-----------------------------------------------
+	@고객센터 > 문의하기
+	------------------------------------------------*/
+	
+	.boxct-d { }
+	.table.type-f tr th { font-size: 13px;}
+	.table.type-f tr th:nth-of-type(1),
+	.table.type-f tr th:nth-of-type(3),
+	.table.type-f tr th:nth-of-type(4) { display: none;}
+	.table.type-f tr th:nth-of-type(5) { width: 15%;}
+	.table.type-f tr td { font-size: 12px; vertical-align: middle;}
+	.table.type-f tr td:nth-of-type(1),
+	.table.type-f tr td:nth-of-type(3),
+	.table.type-f tr td:nth-of-type(4) { display: none;}
+	.table.type-f tr td:nth-of-type(5) { width: 15%;}
+	.table.type-f tr td:nth-of-type(2) a { font-weight: 300;}
+
+	/*-----------------------------------------------
+	@고객센터 > 문의하기 > 상세페이지
+	------------------------------------------------*/
+
+	.table.type-g tr td { }
+	.table-box > h1 { padding: 3px 0; font-size: 13px; width: 80px;}
+	.table-box > span { font-size: 13px;}
+	.table-box > a { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@고객센터 > 문의하기 > 작성
+	------------------------------------------------*/
+
+	.table.type-h tr > th { padding: 12px; font-size: 14px;}
+	.table.type-h tr > td { padding: 12px; font-size: 13px; }
+	
+	.table.type-h tr.file td { padding: 10px 12px 45px;}
+	.input-wrap-qna .input,
+	.input-wrap-qna .input::placeholder,
+	.input-wrap-qna textarea.form-control,
+	.input-wrap-qna textarea.form-control::placeholder { font-size: 13px;}
+
+	.filebox label { top: auto; right: auto; left: 0; bottom: -48px; }
+
+	.check_wrap label.label { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지
+	------------------------------------------------*/
+	
+	.box-myinfo { max-width: 100%; }
+	.box-myinfo-a { padding-bottom: 3vw;}
+	.box-myinfo h1 { font-size: 20px; font-weight: 500; }
+	.box-myinfo h1 > span { font-size: 15px; font-weight: 400;}
+	.box-myinfo p { font-size: 12px;}
+	/*.box-myinfo .btn { top: auto; right: auto; left: 0; bottom: 0;}*/
+	
+	.box-cell.box-cell-a ul li { padding: 10px 20px;}
+	.box-cell.box-cell-a ul li:first-child { padding: 10px;}
+	.box-cell.box-cell-a ul li .box-mypage { text-align: center;}
+	.box-mypage h2 { font-size: 19px; }
+	.box-mypage h1 { font-size: 23px; padding-top: 5px;}
+	.box-mypage h1 > span { font-size: 1.55vw;}
+	.box-mypage .detail-view { font-size: 12px; }
+	.box-mypage .detail-view::after { top: 6px; right: -10px; height: 8px;}
+	
+	.box-cell-b > ul > li { padding: 2.2vw 1.8vw;}
+	.box-cell-b > ul > li:last-child { border-bottom: 0;}
+	.box-cell-b .box-mypage .detail-view::after { top: 4px;}
+	.box-cell-b .box-mypage h3 { font-size: 13px;}
+	.box-cell-b .box-mypage > .box-cell-small h2 { font-size: 14px; }
+	.table.type-j tr > td { padding: 2.2vw;}
+	
+	.box-mypage .select-wrap .select-a { font-size: 12px; height: 30px;}
+	.box-cell-small ul li > span { font-size: 14px; }
+	.box-cell-small ul li > span.bold { font-size: 26px;}
+	.box-cell-small ul li > span > em { font-size: 11px;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 내요금제
+	------------------------------------------------*/
+	
+	.box-cell.box-cell-c { max-width: 100%;}
+	.box-cell.box-cell-c > ul { margin-top: 0;}
+	.box-mypage-a { text-align: left; padding: 0;}
+	.box-mypage-a p { font-size: 15px;}
+	.box-mypage-a h1 { font-size: 19px;}
+	.box-mypage-b h1 { font-size: 23px;} 
+	.box-mypage-c p { font-size: 13px; font-weight: 300;}
+	.box-mypage-c p > strong { display: block; font-size: 13px; font-weight: 400; margin-left: 0;}
+	.box-mypage-c span { font-size: 12px;}
+
+	.box-notice > ul > li { font-weight: 300;}
+	.box-notice > ul > li::before { top: 8px; transform: translate(0);}
+	.box-notice > h2 { font-size: 17px;}
+
+	/*요금제 변경팝업*/
+	.popup.change .popup-contain .popup-inner .contents .box-text > p { font-weight: 300; font-size: 14px; }
+	.popup.change .popup-contain .popup-inner .contents .box-text > p > span { font-weight: 400;}
+	
+	/*요금제 변경 이력 조회 팝업*/
+	.table-bg thead > tr > th, .table-bg tbody > tr > th { font-size: 14px;}
+
+	
+	/*-----------------------------------------------
+	@마이페이지 > 에너지 사용 내역
+	------------------------------------------------*/
+
+	.box-cell-energy > ul { margin-top: 0;}
+	
+	.energy-sub .box-myinfo { padding-bottom: 0; }
+	.box-mypage-e { padding: 0; }
+	.box-mypage-e h2 { font-size: 14px; display: inline-block; vertical-align: middle;}
+	.box-mypage-e > h1 { margin-top: 0; display: inline-block; vertical-align: middle; font-size: 25px; padding-top: 0; margin-left: 10px;}
+	.box-mypage-e > span { display: block; font-size: 12px; font-weight: 400;}
+	
+	.table.type-l tr th > p { font-size: 17px;}
+	.table.type-l tr td { font-size: 15px; padding: 13px; text-align: center; vertical-align: middle;}
+	.table.type-l tr td > h2 { font-size: 16px; font-weight: 500;}
+	.table.type-l tr td > span { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 > 태양광 발전량 내역
+	------------------------------------------------*/
+
+	.box-cell-d .box-mypage > span { font-size: 12px;}
+	.box-mypage { }
+	
+	.box-cell-e ul li:before { display: none;}
+	.box-status > div::after { display: none;}
+	.box-circle { margin: auto;}
+	.box-circle-sub .box-circle-contents > h2 { font-size: 15px !important;}
+	.box-circle-contents h1 { font-size: 20px;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 공동체 태양광 내역
+	------------------------------------------------*/
+
+	.table.type-m th { font-size: 12px;}
+	.table.type-m td { font-size: 12px;}
+	
+	/*-----------------------------------------------
+	@마이페이지 > 전력거래 내역
+	------------------------------------------------*/
+
+	
+
+	/*-----------------------------------------------
+	@마이페이지 > 내 단지 화폐
+	------------------------------------------------*/
+
+	.table-bg-b tbody > tr > th { font-size: 14px; vertical-align: middle;}
+	.table-bg-b tbody > tr > td { font-weight: 300; vertical-align: middle; font-size: 14px;}
+
+	
+	/*-----------------------------------------------
+	@마이페이지 > 내 계정 관리
+	------------------------------------------------*/
+	
+	.my-info > .table { max-width: 100%;}
+	.my-info .info-table .table-input input { width: 30vw;}
+	.my-info .info-table .table-input .sub-text { margin-left: 0; display: block; margin-top: 5px;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 내 계정 관리 > 회원탈퇴
+	------------------------------------------------*/
+
+	.boxinfo-contents.my_withdrawal  > h1 { font-size: 15px;}
+	.my_withdrawal > h3 { font-size: 14px;}
+	.my_withdrawal .box-big .box-notice > h2 { font-size: 14px;}
+	.my_withdrawal .box-big .box-notice p { font-size: 13px;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 에너지 절감
+	------------------------------------------------*/
+
+	.my-energySaving > h2 { font-size: 20px;}
+
+	.bx-big-c .box-mypage-a h1 { padding-top: 0;}
+	.box-cell-f .box-mypage { padding: 0;}
+	
+	.my-energySaving .box-big { margin-bottom: 30px;}
+	.table.type-n tr { border-bottom: 1px solid #ddd;}
+	.table.type-n tr td { font-size: 18px;}
+	.table.type-n tr td .btn-wrap { padding: 0;}
+	.table.type-n tr td > h2 { margin-left: 0; font-size: 18px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 >  에너지 절감(계시요금제일 경우)
+	------------------------------------------------*/
+	.box-cell-f .btn { padding: 10px 4vw;}
+	.btn-some { width: 11vw; font-size: 1.2vw; }
+	.table-energy-saving .box-cs-navi ul li { height: auto; padding: 0; font-size: 1.2vw;}
+	.table-energy-saving .table tr > td:last-of-type h3 { text-align: center; font-size: 2.1vw;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 >  내 고지서
+	------------------------------------------------*/
+
+	.box-bill .table tr > th { padding: 10px; font-size: 14px;}
+	.box-bill .table tr > td { padding: 10px;}
+	.box-bill .table-sub tr > td { font-size: 12px; padding: 4px;}
+	.box-bill .table-sub tr > td td { padding: 4px;}
+	.my-bill-title > p { font-size: 16px;}
+	.my-bill-title > h2 { font-size: 18px;}
+	.my-bill-average { padding: 18px 10px;}
+	.my-bill-average h2 { font-size: 26px;}
+	
+	.banner-wrap { height: 90px; background: #fff9f4; padding: 20px;}
+	.banner-wrap:before { content: '태양광 공유 공동체 1개 추가 구독 시 '; font-size:13px; font-weight: 400; position: absolute; top: 20px; left: 20px;}
+	.banner-wrap > img { display: none; }
+	.banner-wrap p { left: 20px;}
+	.banner-wrap a { top: auto; bottom: 20px; right: 20px; }
+
+
+	/*-----------------------------------------------
+	@서비스 이용 약관
+	------------------------------------------------*/
+
+	.text-contain { padding: 22px 0; max-width: 100%;}
+	.text-title { padding-bottom: 15px; }
+	.text-title h1 { font-size: 22px;}
+
+	.box-contents-item { padding: 15px 0 0;}
+	.box-contents-item h2 { font-size: 16px; padding-bottom: 7px;}
+	.box-contents-item p { font-size: 13px; font-weight: 300;}
+	.box-contents-item p:last-child { padding-bottom: 0;}
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    html, body { min-width:100% }
+	
+	.header {position: fixed; top: 0; left: 0; width: 100%; z-index: 50; background: #fff;}
+	.header h1 { line-height: 12px; width: 40%; margin-left: 15px; padding: 15px 0 0;}
+	.header h1 > a { display: block; padding-left: 30px; font-size: 12px;}
+	.header h1 > a::before { width: 25px; height: 23px; }
+
+	.header .mbStat { top: 0; right: 14%;}
+	.mbStat a { padding: 20px;}
+	.mbStat .btn-bell { margin-right: 0;}
+	.mbStat .btn-logout { text-indent: -9999px; background: url('../../images/common/ico_logout.png')no-repeat center;  width: 21px; height: 21px;}
+	.mbStat .login-text { padding: 0; padding-right: 20px;}
+	
+	.header .gnb { margin: 0; width: 100%; margin-top: 40px; }
+	.header .gnb > ul { display: none;}
+	
+	.m_hamberger-box { position: absolute; top: 0; right: 0; }
+	.hamberger { display: block; width: 40px; height: 40px; background: url('../../images/mobile/ico_hamberger.png')no-repeat center; background-color: #FFC550; transition: 0.3s all;} 	
+	.close { display: none; width: 40px; height: 40px; background: url('../../images/mobile/ico_close.png')no-repeat center; background-color: #FFC550; z-index: 2; } 
+	.m_hamberger-box.show .hamberger { display: none;}
+	.m_hamberger-box.show .close { display: block;}
+
+	.snb { display: block; position: fixed; top: 40px; border-bottom: 0;}
+	.header .snb .wrapper-md > ul { margin-left: 0; position: fixed; top: 41px; right: -100%; bottom: 0; width: 100%; background: #fff; padding: 0; min-width: 0; transition: 0.6s all}
+	.header .snb .wrapper-md > ul > li { display: block;  border-bottom: 1px solid #ccc; width: 100%;}
+	.header .snb .wrapper-md > ul > li:nth-child(3) { margin-left: 0;}
+	.header .snb .wrapper-md > ul > li > a { display: block; font-weight: 500; padding: 20px; position: relative;}
+	.header .snb .wrapper-md > ul > li > a::after { content: ''; display: block; position: absolute; top: 20px; right: 20px; background: url('../../images/mobile/ico_right_arrow2.png')no-repeat center; width: 20px; height: 20px;}
+	.header .snb .wrapper-md > ul > li > ul { background: #F2F3F5; padding: 0; height: 0; opacity: 0; overflow: hidden; transition: 0.6s all;}
+	.header .snb .wrapper-md > ul > li li {display: block;}
+	.header .snb .wrapper-md > ul > li li:last-child { padding-bottom: 0;}
+	.header .snb .wrapper-md .heads-sub ul { background: #F9F9FA; margin: 0 -25px; padding: 0 30px !important;}
+
+	/*알림팝업*/
+	.pop-type-2 { width: 100%;}
+	.popup-wrap #alarmPopup { top: 50px; right: 15px;}
+
+	/*알림설정 팝업*/
+	.popup-wrap #settingPopup { width: 350px; top: 50px; right: 15px; box-shadow: 1px 1px 7px 3px rgba(0,0,0,0.6); }
+
+
+	body.hidden { overflow: hidden;}
+	.snb.on .wrapper-md > ul { right: 0;}
+	.header .snb .wrapper-md > ul > li.on > a::after { transform: rotate(-180deg);}
+	.header .snb .wrapper-md > ul > li.on > ul { height: auto; opacity: 1; padding: 0px 25px;}
+	.heads-sub.on { display: block;}
+	
+	.maincont { padding: 51px 0 20px;}
+
+
+	.boxbn-title h2 { font-size: 25px;}
+
+    .boxbn-btn .btn { display:block; text-align:left }
+    .boxbn, .maincont .boxlink { min-height:120px; height:auto }
+    .maincont .boxlink a { padding:35px }
+    .boxbn .bg-image { position:relative; text-align:right; right:0; bottom:0; padding-top:20px; margin:0 0 -40px 0 }
+    .maincont .imgbn { height:auto }
+    .box-b { height:88vw }
+    .maincont .imgbn img { position:relative; top:0; left:0; transform:none; width:100%; height:auto; border-radius:10px }
+	.boxcs-a h2 { display: inline-block; vertical-align: middle; font-size: 20px; padding-left: 32px;}
+	.boxcs-a h2::before { width: 25px; height: 20px;}
+	.boxcs-a h3 { display: inline-block; vertical-align: middle; padding-top: 0; font-size: 20px;}
+	.boxcs-b p { font-size: 12.5px; line-height: 14px;}
+	.boxcs-c { text-align: left;}
+	.boxcs-c ul li { font-size: 13px;}
+
+	.boxcs-c ul li a { font-size: 12.5px;}
+
+	/*로그인후 모달*/
+	.modal-content { max-width: 90%; margin: 50px auto; overflow: hidden;}
+	.modal .contents-wrap { padding: 30px 0;}
+	.modal .contents-wrap > ul li { padding: 15px 30px;}
+	.modal .contents-wrap > ul li:after { border-right: none; border-bottom: 1px solid #eee; top: auto; bottom: 0; left: 0; width: 100%; height: 1px;}
+	.box-myinfo-b { height: auto;}
+	.box-myinfo-b .btn { position: inherit; margin-top: 5px;}
+	.box-myinfo-b h3 { font-size: 12px;}
+	.table.table-pop { margin-top: 10px;}
+	.table.table-pop th p { font-size: 13px;}
+	.table.table-pop td { font-size: 15px;}
+	.table.table-pop td span { font-size: 20px;}
+	.point-gray { width: 125px; font-size: 12px !important;}
+
+
+	/*-----------------------------------------------
+	@로그인
+	------------------------------------------------*/
+	
+	.box-form { padding: 20vw 10px;}
+	.box-form form > h1 { font-size: 25px;}
+	.table.table-login th, 
+	.table.table-login td { padding: 12px 10px; font-size: 13px;}
+	.table.table-login th { font-size: 13px; }
+	.box-form .boxbn-btn .btn { padding: 13px 0;}
+
+	/*아이디찾기 팝업*/
+	.popup-wrap .popup.serach-id .tab-content { padding: 0;}
+	.popup-wrap .popup.serach-id .tabs ul li { padding: 12px 0;}
+	.popup-wrap .popup.serach-id .tabs ul li p { font-size: 15px;}
+	.table.table-login td input { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@임시비밀번호 메일 양식
+	------------------------------------------------*/
+	
+	.contents-mail .form-wrap { max-width: 100%; padding: 0; margin: 50px 20px; padding: 20px;}
+	.contents-mail .form-wrap .title h1 { font-size: 23px;}
+	.contents-mail .form-wrap .title h2 { font-size: 18px;}
+
+	.contents-mail .form-wrap .content-wrap { padding: 30px 0 0;}
+	.table.table-email th, .table.table-email td { display: block; border: 0;}
+	.table.table-email td { text-align: center;}
+
+	.contents-mail .form-wrap .content-wrap .text p { font-size: 13px; padding-bottom: 5px;}
+	
+	.contents-mail .form-wrap .content-wrap .boxbn-btn { padding: 20px 0 0;}
+	.contents-mail .form-wrap .content-wrap .btn { display: block; margin-right: 0; margin-bottom: 10px; text-align: center;}
+
+	
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개
+	------------------------------------------------*/
+
+	.contents { padding-top: 41px;}
+	
+	.sub-gnb { display: none;}
+
+	.box-subject { margin: 20px 0 0 0; overflow: hidden;}
+	
+	
+	.box-big { display: block; position: relative; padding: 20px 14px 0;}
+	.box-big .box-small { display: block; }
+	.box-big .box-small.bx-s-a,
+	.box-big .box-small.bx-s-b,
+	.box-big .box-small.bx-s-c { width: 100%;}
+	
+	.box-big .box-xsmall { display: block; width: 100%; padding-left: 31vw;}
+	.box-big .box-xsmall h1 { display: block; width: 90px; height: 100%; padding: 13px; position: absolute; top: 0; left: 0; padding-top: 60px; text-align: center;}
+	.box-big .box-xsmall h1 img { max-width: 75%;}
+	.box-big .box-xsmall h2 { display: block; padding: 0; }
+	.box-big .box-xsmall h2 span { font-size: 19px; }
+	.box-big .box-xsmall p { font-size: 12px;}
+
+	.box-big .box-small.bx-s-b { padding: 0 13px; text-align: left; padding-left: 31vw;}
+	.box-big .box-small.bx-s-b p { font-size: 14px; display: block;}
+	.box-big .box-small.bx-s-b h2 { font-size: 23px; display: block; padding: 0;}
+
+	.box-big .box-small.bx-s-c { text-align: left; padding: 10px 0 13px; padding-left: 31vw;}
+	.box-big .box-small.bx-s-c .btn { padding: 6px 14px; font-size: 13px;}
+	
+	.box-left { display: none;}
+	.box-right { border-left: 0; padding: 25px 0; padding-bottom: 35px;}
+	.bx-contents { padding: 0 15px;}
+	.sub-title { padding: 0 0 14px;}
+	.sub-title h1 { font-size: 22px;}
+	.sub-title p { font-size: 13px; padding-right: 0;}
+
+
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개 > 누진제 요금
+	------------------------------------------------*/
+
+	.bx-big-b { padding: 15px 20px;}
+	.plan_info-a {}
+	.bx-big-b .box-small.bx-s-e { width: auto; padding-left: 0;}
+	.bx-big-b .box-small.bx-s-e h2 { font-size: 29px; text-align: center;}
+	.bx-big-b .box-small.bx-s-f span { font-size: 13px;}
+	.box-small.bx-s-g { padding: 10px 0; }
+	.bx-big-b .box-small.bx-s-g .btn-basic, 
+	.bx-big-b .box-small.bx-s-g .btn { width: 100%; text-align: center;}
+
+	.boxinfo-contents > h1 { padding-bottom: 10px; font-size: 22px;}
+	
+	.table.type-i th > p { font-size: 16px;}
+	.table.type-i td { font-size: 14px;}
+	
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개 > 계시 요금
+	------------------------------------------------*/
+
+	.table.table-bg-a tr > th { font-size: 14px;}
+	.table.table-bg-a tr > td { font-size: 11px; padding: 8px 4px; }
+
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 소개 > 전력피크요금
+	------------------------------------------------*/
+
+	.table.type-k tr th { font-size: 12px; padding: 7px 2px; vertical-align: middle;}
+	.table.type-k tr > td { padding: 7px 2px; font-size: 11px; vertical-align: middle;}
+
+	/*-----------------------------------------------
+	@전기 요금제 > 사용량 분석
+	------------------------------------------------*/
+	
+	.box-graph-wrap > h2 { font-size: 19px;}
+	.box-graph-wrap > h2 > span { font-size: 14px;}
+	.graph-contain .graph-bg { height: 15px;}
+	
+	.box-text ul { padding: 0;}
+	.box-text ul li { padding: 15px 5px;}
+	.box-text ul li .text-info { font-size: 14px; text-align: center;}
+	.box-text ul li .text-info span { font-size: 14px; text-align: center; display: block;}
+	.box-text ul li .text-info strong { font-size: 20px; display: inline-block;}
+	.box-text ul li .text-info em { font-size: 12px;}
+
+	.box-text-a ul li .text-info strong { font-size: 15px;}
+	.box-text ul li .text-info span { display: inline-block;}
+
+	.table.type-b tr td { padding: 0;}
+	.box-quantity h2 { font-size: 24px; text-align: center;}
+	.box-quantity span { font-size: 12px;}
+	.box-quantity em { margin: 0 0 0 9px; font-size: 12px;}
+	.box-quantity-a > p { font-size: 14px;}
+	.box-quantity-a > p > span { font-size: 14px;}
+
+	.boxinfo-contents-a > h1 { font-size: 19px;}
+	
+	.box-text-a-a ul li { padding: 10px;}
+	.box-text-a-a ul li:first-child { padding-bottom: 0;}
+	.box-text-a-a ul li p strong { font-size: 14px; }
+	.box-text-a-a ul > li > p > span {display: block; margin-left: 0; margin-top: 7px;}
+
+	.box-compare .text h1 { font-size: 15px;}
+	i.sad, 
+	i.smile,
+	i.normal,
+	i.good,
+	i.bad	{ width: 25px; height: 25px; background-size: 100%;}
+	.box-compare .text > p { font-size: 13px;}
+	.box-gr-info { padding: 15px 0;}
+
+	.box-quantity > p { font-size: 13px;}
+	.box-quantity > p > span { font-size: 13px;}
+
+	.box-quantity-a h2 { font-size: 16px;}
+
+	/*-----------------------------------------------
+	@전기 요금제 > 요금제 추천
+	------------------------------------------------*/
+
+	.box-item { padding: 15px 12px; height: 524px;}
+
+	/*-----------------------------------------------
+	@전기 요금제 > 에너지 절약 컨설팅
+	------------------------------------------------*/
+
+	.box-cs-navi.type-a { padding: 0 0 20px;}
+	.box-cs-navi > ul li { padding: 10px 10px 5px; min-height: 102px;}
+	.box-cs-navi > ul li::after { border-right: 0;}
+	.box-cs-navi > ul li a { display: block;}
+	
+	.circle { width: 120px; height: 120px; background-size: 100%;}
+	.box-cs-navi.type-b ul li { padding: 20px 0; height: auto;}
+	.box-cs-navi.type-b ul li::after { width: 18px; height: 10px; background: url('../../images/mypage/ico_next-arrow.png')no-repeat center; background-size: 100%; right: -11px;}
+	.box-cs-navi > ul li a h2 img { max-width: 25%;}
+	.circle .text p { font-size: 12px;}
+	.circle .text h2 { font-size: 19px;}
+
+	.saving { padding-top: 0;}
+	.saving .table tr > th { font-size: 16px;}
+	.saving .table tr > td { font-size: 13px;}
+	.saving > p { font-size: 14px; margin-top: 20px;}
+	.saving > p > strong { font-size: 16px;}
+
+
+	/*---------------------------------------------------------------------
+	@태양광 발전량 분석 > 우리집 태양광 > 우리집 태양광 소개
+	-----------------------------------------------------------------------*/
+	
+	.boxct .boxct-b { padding: 0;}
+	.boxct .boxct-b h2 { font-size: 17px;}
+	.boxct .boxct-b p { font-size: 12px;}
+
+	/*---------------------------------------------------------------------
+	@태양광 발전량 분석 > 우리집 태양광 > 설치 시뮬레이션
+	-----------------------------------------------------------------------*/
+
+	.boxinfo ul { padding-top: 12px;}
+	.boxinfo ul li { font-size: 12px;}
+	.boxinfo ul li::before { width: 3px; height: 3px; top: 8px;}
+	
+	.info-table .table-input input { width: 172px;}
+	.table.simulation tr th { font-size: 13px; vertical-align: top; width: 30%; }
+	.table.simulation tr td { vertical-align: top; }
+	.sub-text { margin-left: 0; display: block; margin-top: 5px}
+	
+	.btn-wrap { padding: 10px 0;}
+	.btn-wrap .btn { margin: auto; font-size: 13px; text-align: center; display: inline-block;}
+	
+	.table.type-a tr td { text-align: center;}
+	.table.type-a p { font-size: 12px;}
+	.table.type-a span { font-size: 13px; margin-left: 0;}
+	.table.type-a span em { display: block; font-size: 12px;}
+
+	/*---------------------------------------------------------------------
+	@태양광 발전량 분석 > 공용 태양광 > 발전량 현황
+	-----------------------------------------------------------------------*/
+
+	.boxinfo h1 { font-size: 20px;}
+
+	.tabs ul li { font-size: 13px;}
+	.tab-content { padding: 13px 13px 0;}
+	
+	.box-quantity.type-a h2 { font-size: 16px; }
+
+
+	/*---------------------------------------------------------------------
+	@국민DR > 국민 DR 참여현황
+	-----------------------------------------------------------------------*/
+	.box-calender { position: inherit; top: auto; right: auto; margin-bottom: 20px; display: inline-block;}
+	.box-calender .calender { margin-right: 0;}
+	.calender-a { padding: 15px 0;}
+	.calender input { width: 80px; height: 30px; font-size: 13px; padding: 6px; }
+	.calender .ui-datepicker-trigger { width: 19px; height: 19px; background-size: 100%;}
+	.box-calender .box-lookup { padding-left: 7px;}
+	.box-calender .box-lookup .select-wrap span { font-size: 13px;}
+	.box-calender .box-lookup .select-wrap .form-control.select-a { width: 58px; height: 30px; padding: 3px 6px; font-size: 13px;}
+	.box-calender .box-lookup .select-wrap .boxbn-btn .btn { font-size: 11px; padding: 6px 12px;}
+
+	.table-bg.type-a tr th { padding: 10px 5px; font-size: 13px;}
+	.table-bg.type-a tr td { font-size: 12px;}
+
+	.box-text ul li .text-info.type-a span { display: block;}
+	.box-text ul li .text-info .btn { font-size: 10px;}
+
+	
+	.scroll-box { overflow-x: auto;}
+	.scroll-box .table { width: 700px;}
+
+
+
+	/*---------------------------------------------------------------------
+	@국민DR > 기기현황
+	-----------------------------------------------------------------------*/
+	
+	.tooltip { top: 10px;}
+	.box-text-c ul li { padding: 10px;}
+	.box-text-c ul li::after { border-right: 0;}
+	.box-text-c ul li .text-info strong { font-size: 23px;}
+
+	.tooltip .tooltiptext { width: 250px; font-size: 12px !important;}
+
+	.device > .btn { font-size: 12px;}
+	
+	.box-power { height: 155.97px;}
+	.box-power .box-img h3 { font-size: 17px;}
+	.box-power .box-img span { font-size: 14px;}
+
+	/*디바이스 등록 팝업*/
+	.popup.change .popup-contain .popup-inner .boxbn-btn .btn { display: inline-block; text-align: center;} 
+	.popup.change .popup-contain .popup-inner .contents { padding: 7px 13px; max-width: 100%;}
+	.popup.device .table tr > th, 
+	.popup.device .table tr > td { font-size: 14px; vertical-align: middle; padding: 5px;}
+	.popup.device .table .form-control { font-size: 12px; padding: 6px;}
+	.popup.device .table .input { font-size: 12px; padding: 6px;}
+
+
+	/*---------------------------------------------------------------------
+	@전력거래 > 에너지 현황
+	-----------------------------------------------------------------------*/
+
+	.box-energy > ul > li { text-align: left;}
+	.box-energy > ul > li > p { font-size: 13px; font-weight: 400;}
+	.box-energy > ul > li > h2 { font-size: 21px; text-align: right;}
+
+	.table.table-energy tr > th { padding: 10px;}
+	.table.table-energy tr > th > .text p { font-size: 15px;}
+	.table.table-energy tr > th > .text h2 { font-size: 21px;}
+	
+	.box-cs-navi.type-c { padding-bottom: 0;}
+	.box-cs-navi.type-c > ul li { padding: 10px;}
+	.box-cs-navi.type-c > ul li p { font-size: 13px; height: 46px;}
+	.box-cs-navi.type-c > ul li h3 { font-size: 21px;}
+	.box-cs-navi.type-c > ul li h3 span { font-size: 14px;}
+	
+	.table-energy.table-energy-a tr > td { padding: 15px 0;}
+	.table-energy.table-energy-a .box-mypage-d .box-small h1 { display: block; margin: auto;}
+	.table-energy.table-energy-a .box-mypage-d .box-small h2 > p { font-size: 13px; padding-top: 10px; margin-top: 0;}
+	.table-energy.table-energy-a .box-mypage-d .box-small h2 > span { font-size: 21px;}
+
+	.tabs.tabs-width ul li { width: 50%; }
+
+	.calender-a > p { display: block; padding-bottom: 10px; font-size: 15px;}
+	.calender-a .boxbn-btn .btn { padding: 5px 8px;}
+	
+	.my-energy.tab-energy { padding: 10px 0;}
+	.my-energy.tab-energy .table tr th { font-size: 13px; vertical-align: middle;}
+	.my-energy.tab-energy .table tr td { font-size: 12px; vertical-align: middle; font-weight: 300;}
+
+	/*---------------------------------------------------------------------
+	@전력거래 > 에너지 구매
+	-----------------------------------------------------------------------*/
+
+	.table.table-buy tr th { font-size: 13px;}
+	.table.table-buy tr td { font-size: 11px; padding: 0;}
+
+	/*구매하기 팝업*/
+	.popup.buy .popup-contain .popup-inner .contents { padding: 15px 10px;}
+	.popup.buy .table { max-width: 100%;}
+	.popup.buy .table tr > th { font-size: 14px;}
+
+
+
+	/*-----------------------------------------------
+	@고객센터
+	------------------------------------------------*/
+	
+	.search .input-wrap { max-width: 335px;}
+	.search .input-wrap .input { width: 80%; height: 40px; font-size: 13px; padding: 0 10px; font-weight: 300;}
+	.search .input-wrap .input::placeholder { font-weight: 300;}
+	.search .boxbn-btn { width: 20%;}
+	.search .boxbn-btn .btn { padding: 11px; width: 100%; text-align: center; font-size: 12px;}
+
+	.toggle-wrap .title-wrap { padding: 14px;}
+	.toggle-wrap .title-wrap p { font-size: 14px; font-weight: 300; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 24px;}
+	.toggle-wrap .title-wrap p.question::before { font-size: 19px;}
+	.ico-dw { width: 14px; height: 8px; background-size: 100%; right: 7px;}
+	.toggle-wrap .sub-contents { padding: 16px 30px;}
+	.toggle-wrap .sub-contents p { font-size: 12px; font-weight: 300;}
+	
+	.box-cs-navi > ul li a h3 { font-size: 16px;}
+	.box-cs-navi > ul li a p { font-size: 12px;}
+
+	
+	/*-----------------------------------------------
+	@고객센터 > 공지사항
+	------------------------------------------------*/
+	
+	.table.type-c { table-layout: fixed;}
+	.table.type-c tr th { font-size: 13px; padding: 8px;}
+	.table.type-c tr td { padding: 12px 4px; font-size: 13px; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	.table.type-c tr td:last-of-type { text-align: center;}
+	.table.type-c tr td a { width: auto; font-size: 13px;}
+
+	.pagination > li > a, .pagination > li > span { padding: 6px 10px;}
+
+	/*.toggle-wrap .sub-contents { padding: 16px 30px;}*/
+
+
+	/*-----------------------------------------------
+	@고객센터 > 공지사항 > 상세페이지
+	------------------------------------------------*/
+
+	.table.type-d tr th { padding: 13px 5px;}
+	.table.type-d tr td { padding: 11px;}
+	.table.type-d .contents { font-size; 13px;}
+	
+	.table.type-e tr td { vertical-align: middle;}
+	.table.type-e tr td:first-of-type { padding: 8px 5px;}
+	.table.type-e tr td:nth-of-type(3) { padding: 8px 5px;}
+	.notice-btn .btn { display: inline-block;}
+
+
+	/*-----------------------------------------------
+	@고객센터 > 문의하기
+	------------------------------------------------*/
+	
+	.boxct-d { max-width: 100%;}
+	.table.type-f tr th { font-size: 13px;}
+	.table.type-f tr th:nth-of-type(1),
+	.table.type-f tr th:nth-of-type(3),
+	.table.type-f tr th:nth-of-type(4) { display: none;}
+	.table.type-f tr th:nth-of-type(5) { width: 15%;}
+	.table.type-f tr td { font-size: 12px; vertical-align: middle;}
+	.table.type-f tr td:nth-of-type(1),
+	.table.type-f tr td:nth-of-type(3),
+	.table.type-f tr td:nth-of-type(4) { display: none;}
+	.table.type-f tr td:nth-of-type(5) { width: 15%;}
+	.table.type-f tr td:nth-of-type(2) a { font-weight: 300;}
+
+	/*-----------------------------------------------
+	@고객센터 > 문의하기 > 상세페이지
+	------------------------------------------------*/
+
+	.table.type-g tr td { display: block; padding: 10px;}
+	.table-box > h1 { font-size: 14px; width: 80px; font-weight: 300; }
+	.table-box > span { font-size: 13px;}
+	.table-box > a { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@고객센터 > 문의하기 > 작성
+	------------------------------------------------*/
+
+	.table.type-h tr > th { padding: 12px; font-size: 14px;}
+	.table.type-h tr > td { padding: 12px; font-size: 13px; }
+	
+	.table.type-h tr.file td { padding: 10px 12px 45px;}
+	.input-wrap-qna .input,
+	.input-wrap-qna .input::placeholder,
+	.input-wrap-qna textarea.form-control,
+	.input-wrap-qna textarea.form-control::placeholder { font-size: 13px;}
+
+	.filebox label { top: auto; right: auto; left: 0; bottom: -48px; }
+
+	.check_wrap label.label { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지
+	------------------------------------------------*/
+	
+	.box-myinfo { max-width: 100%; }
+	.box-myinfo-a { padding-bottom: 40px;}
+	.box-myinfo h1 { font-size: 20px; font-weight: 500; }
+	.box-myinfo h1 > span { font-size: 15px; font-weight: 400;}
+	.box-myinfo p { font-size: 12px;}
+	.box-myinfo .btn { top: auto; right: auto; left: 0; bottom: 0;}
+	
+	.box-cell.box-cell-a ul li { padding: 10px; }
+	.box-cell.box-cell-a ul li:first-child { padding: 10px;}
+	.box-cell.box-cell-a > ul > li::after { display: none;}
+	.box-mypage h2 { font-size: 16px; }
+	.box-mypage h1 { font-size: 22px; padding-top: 5px;}
+	.box-mypage h1 > span { font-size: 14px;}
+	.box-mypage .detail-view { font-size: 12px; }
+	.box-mypage .detail-view::after { top: 6px; right: -10px; height: 8px;}
+	
+	.box-cell-b > ul > li { border-bottom: 1px solid #DDDDDD; padding: 20px 10px;}
+	.box-cell-b > ul > li:last-child { border-bottom: 0;}
+	.box-cell.box-cell-b > ul > li::after { display: none;}
+	.box-cell-b .box-mypage .detail-view::after { top: 4px;}
+	.box-cell-b .box-mypage h2 { font-size: 16px; font-weight: 700; text-align: left;}
+	.box-cell-b .box-mypage h3 { font-size: 14px;}
+	.box-cell-b .box-mypage > .box-cell-small h2 { font-size: 14px; font-weight: 300; text-align: center;}
+	.table.type-j tr > td { padding: 0;}
+	
+	.box-mypage .select-wrap { max-width: 100%;}
+	.box-mypage .select-wrap .select-a { font-size: 13px;}
+	.box-cell-small ul li > span.bold { font-size: 24px;}
+
+	.box-mypage .box-cell-small ul li { text-align: center;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 내요금제
+	------------------------------------------------*/
+	
+	.box-cell.box-cell-c { max-width: 100%;}
+	.box-cell.box-cell-c > ul { margin-top: 0;}
+	.box-mypage-a { text-align: left; padding: 0;}
+	.box-mypage-a p { font-size: 15px;}
+	.box-mypage-a h1 { font-size: 19px;}
+	.box-mypage-b h1 { font-size: 23px;} 
+	.box-mypage-c p { font-size: 13px; font-weight: 300;}
+	.box-mypage-c p > strong { display: block; font-size: 13px; font-weight: 400; margin-left: 0;}
+	.box-mypage-c span { font-size: 12px;}
+
+	.box-notice > ul > li { font-weight: 300;}
+	.box-notice > ul > li::before { top: 8px; transform: translate(0);}
+	.box-notice > h2 { font-size: 17px;}
+
+	/*요금제 변경팝업*/
+	.popup.change .popup-contain .popup-inner .contents .box-text > p { font-weight: 300; font-size: 14px; }
+	.popup.change .popup-contain .popup-inner .contents .box-text > p > span { font-weight: 400;}
+	
+
+	/*요금제 변경 이력 조회 팝업*/
+	.popup-wrap .popup .popup-contain .popup-inner .contents { max-width: 86%;}
+	.table-bg thead > tr > th, .table-bg tbody > tr > th { font-size: 14px;}
+
+
+	
+	/*-----------------------------------------------
+	@마이페이지 > 에너지 사용 내역
+	------------------------------------------------*/
+
+	.box-cell-energy > ul { margin-top: 0;}
+	
+	.energy-sub .box-myinfo { padding-bottom: 0; }
+	.box-mypage-e { padding: 0; }
+	.box-mypage-e h2 { font-size: 14px; display: inline-block; vertical-align: middle;}
+	.box-mypage-e > h1 { margin-top: 0; display: inline-block; vertical-align: middle; font-size: 25px; padding-top: 0; margin-left: 10px;}
+	.box-mypage-e > span { display: block; font-size: 12px; font-weight: 400;}
+	
+	.table.type-l tr th > p { font-size: 17px;}
+	.table.type-l tr td { font-size: 15px; padding: 13px; text-align: center; vertical-align: middle;}
+	.table.type-l tr td > h2 { font-size: 16px; font-weight: 500;}
+	.table.type-l tr td > span { font-size: 13px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 > 태양광 발전량 내역
+	------------------------------------------------*/
+
+	.box-cell-d .box-mypage > span { font-size: 12px;}
+	.box-mypage { background: #fff; padding: 16px 10px; border-radius: 5px; text-align: center;}
+	
+	.box-cell-e ul li:before { display: none;}
+	.box-status > div::after { display: none;}
+	.box-circle { margin: auto;}
+	.box-circle-sub .box-circle-contents > h2 { font-size: 15px !important;}
+	.box-circle-contents h1 { font-size: 20px;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 공동체 태양광 내역
+	------------------------------------------------*/
+
+	.sub-title-a { font-size: 20px; margin-bottom: 5px;}
+	.table.type-m { border-top: 0;}
+	.table.type-m tr { display:block; border: 1px solid #707070; border-radius: 5px; margin-bottom: 20px; padding: 10px 15px;}
+	.table.type-m tr:nth-child(1) { display: none;}	
+	.table.type-m th { display:none;}
+	.table.type-m td { display:block; text-align:left; font-size: 14px; }
+	.table.type-m td:before { color: #9A9A9A; font-weight: 300;}
+	.table.type-m td:nth-child(1) { display: none; }
+	.table.type-m td:nth-child(2):before { content:"상품종류 : " }
+	.table.type-m td:nth-child(3):before { content:"상품명 : " }
+	.table.type-m td:nth-child(4):before { content:"고객번호 : " }
+	.table.type-m td:nth-child(5):before { content:"청약 접수일 : " }
+	.table.type-m td:nth-child(6):before { content:"청약 접수번호 : " }
+	.table.type-m td:nth-child(7):before { content:"당첨여부 : " }
+	.table.type-m td:nth-child(7) { border-bottom: 0;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 > 전력거래 내역
+	------------------------------------------------*/
+
+	.box-mypage-d .box-small h1 { width: 45px; height: 45px; display: block; margin: auto;}
+	.box-mypage-d .box-small h2 { padding: 0;}
+	.box-mypage-d .box-small h2 > p { font-size: 16px; margin-top: 10px;}
+	.box-mypage-d .box-small h2 > span { font-size: 24px;}
+	.box-mypage-d .box-small h2 > span > em { font-size: 16px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 > 내 단지 화폐
+	------------------------------------------------*/
+
+	.table-bg-b tbody > tr > th { font-size: 14px; vertical-align: middle;}
+	.table-bg-b tbody > tr > td { font-weight: 300; vertical-align: middle;}
+
+	
+	/*-----------------------------------------------
+	@마이페이지 > 내 계정 관리
+	------------------------------------------------*/
+
+	.my-info { padding: 0;}
+	.my-info > .table { max-width: 100%;}
+	.my-info > .table tr th { font-size: 14px; font-weight: 400; vertical-align: top;}
+	.my-info .info-table .table-input input { width: 100%;}
+	.my-info .info-table .table-input .sub-text { margin-left: 0;}
+	.my-info .info-table .table-input .btn-info { margin-left: 0; margin-top: 7px;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 내 계정 관리 > 회원탈퇴
+	------------------------------------------------*/
+
+	.boxinfo-contents.my_withdrawal  > h1 { font-size: 15px;}
+	.my_withdrawal > h3 { font-size: 14px;}
+	.my_withdrawal .box-big .box-notice > h2 { font-size: 14px;}
+	.my_withdrawal .box-big .box-notice p { font-size: 13px;}
+
+	/*-----------------------------------------------
+	@마이페이지 > 에너지 절감
+	------------------------------------------------*/
+
+	.my-energySaving > h2 { font-size: 20px;}
+
+	.bx-big-c .box-mypage-a h1 { padding-top: 0;}
+	.box-cell-f .box-mypage { padding: 0;}
+	
+	.my-energySaving .box-big { margin-bottom: 30px;}
+	.table.type-n tr { border-bottom: 1px solid #ddd;}
+	.table.type-n tr td { font-size: 14px; vertical-align: middle; display: block; text-align: center; border-bottom: 0; padding: 10px 0;}
+	.table.type-n tr td > h2 { margin-left: 0; font-size: 18px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 >  에너지 절감(계시요금제일 경우)
+	------------------------------------------------*/
+
+	.table-energy-saving .box-cs-navi ul li { height: auto; padding: 0;}
+	.table-energy-saving .table tr > td:last-of-type h3 { text-align: center; font-size: 24px;}
+
+
+	/*-----------------------------------------------
+	@마이페이지 >  내 고지서
+	------------------------------------------------*/
+
+	.box-bill .table tr > th { padding: 10px 5px; font-size: 14px;}
+	.box-bill .table tr > td { padding: 10px;}
+	.box-bill .table-sub tr > td { font-size: 12px; padding: 4px;}
+	.box-bill .table-sub tr > td td { padding: 4px;}
+	.my-bill-title > p { font-size: 16px;}
+	.my-bill-title > h2 { font-size: 18px;}
+	.my-bill-average { padding: 18px 10px;}
+	.my-bill-average h2 { font-size: 26px;}
+	
+	.banner-wrap { height: 90px; background: #fff9f4; padding: 20px;}
+	.banner-wrap:before { content: '태양광 공유 공동체 1개 추가 구독 시 '; font-size:13px; font-weight: 400; position: absolute; top: 20px; left: 20px;}
+	.banner-wrap > img { display: none; }
+	.banner-wrap p { left: 20px;}
+	.banner-wrap a { top: auto; bottom: 20px; right: 20px; }
+
+
+	/*-----------------------------------------------
+	@서비스 이용 약관
+	------------------------------------------------*/
+
+	.text-contain { padding: 22px 0; max-width: 100%;}
+	.text-title { padding-bottom: 15px; }
+	.text-title h1 { font-size: 22px;}
+
+	.box-contents-item { padding: 15px 0 0;}
+	.box-contents-item h2 { font-size: 16px; padding-bottom: 7px;}
+	.box-contents-item p { font-size: 13px; font-weight: 300;}
+	.box-contents-item p:last-child { padding-bottom: 0;}
+
+
+
+
+}
+
+
+@media (max-width: 460px){
+	.popup-wrap #alarmPopup,
+	.popup-wrap #settingPopup { width: 90%; right: auto; left: 50%; transform: translateX(-50%);}
+
+}

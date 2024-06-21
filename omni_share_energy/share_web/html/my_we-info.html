@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>마이 페이지 > 공동체 태양광 내역</title>
+
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<meta name="viewport" content="user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, viewport-fit=cover" />
+
+<!-- webfont load-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet"><!-- font-family: 'Roboto', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet"><!-- font-family: 'Noto Serif KR', serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet"> <!-- font-family: 'Do Hyeon', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"><!-- font-family: 'Noto Sans KR', sans-serif; -->
+
+<!-- ui load -->
+<link rel="stylesheet" type="text/css" href="../css/ui/jquery-ui.css"/><!-- 캘린더 css -->
+<link rel="stylesheet" type="text/css" href="../css/ui/reset.css"/>
+<link rel="stylesheet" type="text/css" href="../css/ui/style_guide.css"/>
+<link rel="stylesheet" type="text/css" href="../css/ui/custom.css"/>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="crossorigin="anonymous"></script> 
+</head>
+<body>
+    
+    <div class="header">
+        <div class="wrapper-md">
+            <h1><a href="#">RESIDENTIAL SOLAR</a></h1>
+            <div class="gnb">
+                <ul>
+                    <li><a href="#">전기 요금제</a></li>
+                    <li><a href="#">태양광 발전량 분석</a></li>
+                    <li><a href="#">국민 DR 참여</a></li>
+                    <li><a href="#">전력거래</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+            <div class="mbStat">
+                <a href="#" class="btn-mypage"></a>
+				<a href="#" class="login-text">로그인</a>
+			</div>
+        </div>
+		<div class="m_hamberger-box">
+			<div class="hamberger"></div>
+			<div class="close"></div>
+		</div>
+		<div class="snb">
+			<div class="wrapper-md">
+				<ul>
+					<li>
+						<a href="#">전기 요금제</a>
+						<ul>
+							<li><a href="#">요금제 소개</a></li>
+							<li><a href="#">사용량 분석</a></li>
+							<li><a href="#">요금제 추천</a></li>
+							<li><a href="#">에너지 절약 컨설팅</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">태양광 발전량 분석</a>
+						<ul>
+							<li class="heads-sub"><a href="#">우리집 태양광</a>
+								<ul>
+									<li><a href="#">우리집 태양광 소개</a></li>
+									<li><a href="#">설치 시뮬레이션</a></li>
+								</ul>
+							</li>
+							<li class="heads-sub"><a href="#">공용 태양광</a>
+								<ul>
+									<li><a href="#">공용 태양광 소개</a></li>
+									<li><a href="#">발전량 현황</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">국민 DR 참여</a>
+						<ul>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">국민 DR</a></li>
+							<li><a href="#">기기 현황</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">전력거래</a>
+						<ul>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">에너지 현황</a></li>
+							<li><a href="#">에너지 구매</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">고객센터</a>
+						<ul>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">자주하는 질문</a></li>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">문의하기</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+
+    <div class="contents">
+        <div class="wrapper-md">
+            <div class="row">
+                <div class="box-left col-lg-2 col-xs-12">
+					<div class="bx-contain sub-navi">
+						<h2>마이 페이지</h2>
+						<ul>
+							<li class=""><a href="#">내 요금제</a></li>
+							<li class=""><a href="#">에너지 사용 내역</a></li>
+							<li class=""><a href="#">태양광 발전량 내역</a></li>
+							<li class="on"><a href="#">공동체 태양광 내역</a></li>
+							<li class=""><a href="#">국민 DR 참여 내역</a></li>
+							<li class=""><a href="#">전력거래 내역</a></li>
+							<li class=""><a href="#">내 단지 화폐</a></li>
+							<li class=""><a href="#">내 계정 관리</a></li>
+							<li class=""><a href="#">에너지 절감</a></li>
+							<li class=""><a href="#">내 고지서</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="box-right col-lg-10 col-xs-12">
+					<div class="bx-contain bx-contents">
+						<div class="box-theme">
+							<div class="sub-gnb">
+								<ul>
+									<li><a href="#"><img src="../images/common/ico_home.png" alt="home" /></a></li>
+									<li><a href="#">마이 페이지</a></li>
+									<li><a href="#">공동체 태양광 내역: 청약내역</a></li>
+								</ul>
+							</div>
+							<div class="sub-title">
+								<h1>공동체 태양광 내역</h1>
+							</div>
+						</div>
+						<div class="box-subject mg-top-30">
+							<h2 class="sub-title-a">청약 내역</h2>
+							<div class="input-wrap calender calender-a">
+								<p>청약 접수일</p>
+								<input type="text" name="wr_5" id="datepicker" class="input">
+								<label for="wr_5"></label>
+								~
+								<input type="text" name="wr_5" id="datepicker2" class="input">
+								<label for="wr_5"></label>
+								<div class="boxbn-btn">
+									<button type="submit" class="btn btn-sm btn-primary">조회</button>
+								</div>
+							</div>
+							<div class="boxinfo-contents">
+								<table class="table table-bg-b type-m">
+									<tr>
+										<th>번호</th>
+										<th>상품종류</th>
+										<th>상품명</th>
+										<th>고객번호</th>
+										<th>청약 접수일</th>
+										<th>처약 접수번호</th>
+										<th>청약 당첨여부</th>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>분양형</td>
+										<td>[서울] 난지 발전현장</td>
+										<td>12 4567 8900</td>
+										<td>2020.02.07</td>
+										<td>20200207-B25A34</td>
+										<td>발표대기</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>분양형</td>
+										<td>[서울] 난지 발전현장</td>
+										<td>12 4567 8900</td>
+										<td>2020.02.07</td>
+										<td>20200207-B25A34</td>
+										<td class="yellow">당첨</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>구독형</td>
+										<td>[서울] 탄천 발전2현장</td>
+										<td>25 1234 5678</td>
+										<td>2020.02.07</td>
+										<td>20200207-B25A34</td>
+										<td class="yellow">당첨</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>구독형</td>
+										<td>[서울] 탄천 발전2현장</td>
+										<td>12 1254 8900</td>
+										<td>2020.02.07</td>
+										<td>20200207-B25A34</td>
+										<td class="gray">탈락</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="wrapper-md">
+            <div class="row">
+                <div class="col-lg-2 col-xs-12">
+					<div class="boxcs boxcs-a">
+						<h2>고객센터</h2>
+						<h3>1555-1234</h3>
+					</div>
+				</div>
+                <div class="col-lg-6 col-xs-12">
+					<div class="boxcs boxcs-b">
+						<p>서울시 성동구 광나루로 172 린하우스 (성수동1가)</p>
+						<p>TEL. 02-418-7550  FAX. 02-418-7551</p>
+						<p>COPYRIGHT(C) 2015 OMNISYSTEM All Rights Reserved.</p>
+					</div>
+				</div>
+                <div class="col-lg-4 col-xs-12">
+					<div class="boxcs boxcs-c">
+						<ul>
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#">개인정보처리방침</a></li>
+						</ul>
+						<div class="links">
+							<a href="#"><img src="../images/common/ico_logo-other.png" alt="로고" /></a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+<script src="../js/libs/datepicker/jquery-ui.js"></script><!-- 캘린더 js-->
+<script src="../js/ui/ui_popup.js"></script>
+<script src="../js/ui/custom.js"></script>
+
+</body>
+</html>

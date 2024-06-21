@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>로그인</title>
+
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<meta name="viewport" content="user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, viewport-fit=cover" />
+
+<!-- webfont load-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet"><!-- font-family: 'Roboto', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet"><!-- font-family: 'Noto Serif KR', serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet"> <!-- font-family: 'Do Hyeon', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"><!-- font-family: 'Noto Sans KR', sans-serif; -->
+
+<!-- ui load -->
+<link rel="stylesheet" type="text/css" href="../css/ui/jquery-ui.css"/><!-- 캘린더 css -->
+<link rel="stylesheet" type="text/css" href="../css/ui/reset.css"/>
+<link rel="stylesheet" type="text/css" href="../css/ui/style_guide.css"/>
+<link rel="stylesheet" type="text/css" href="../css/ui/custom.css"/>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="crossorigin="anonymous"></script> 
+</head>
+<body>
+    
+    <div class="header">
+        <div class="wrapper-md">
+            <h1><a href="#">RESIDENTIAL SOLAR</a></h1>
+            <div class="gnb">
+                <ul>
+                    <li><a href="#">전기 요금제</a></li>
+                    <li><a href="#">태양광 발전량 분석</a></li>
+                    <li><a href="#">국민 DR 참여</a></li>
+                    <li><a href="#">전력거래</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+            <div class="mbStat">
+                <a href="#" class="btn-mypage"></a>
+				<a href="#" class="login-text">로그인</a>
+			</div>
+        </div>
+		<div class="m_hamberger-box">
+			<div class="hamberger"></div>
+			<div class="close"></div>
+		</div>
+		<div class="snb">
+			<div class="wrapper-md">
+				<ul>
+					<li>
+						<a href="#">전기 요금제</a>
+						<ul>
+							<li><a href="#">요금제 소개</a></li>
+							<li><a href="#">사용량 분석</a></li>
+							<li><a href="#">요금제 추천</a></li>
+							<li><a href="#">에너지 절약 컨설팅</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">태양광 발전량 분석</a>
+						<ul>
+							<li class="heads-sub"><a href="#">우리집 태양광</a>
+								<ul>
+									<li><a href="#">우리집 태양광 소개</a></li>
+									<li><a href="#">설치 시뮬레이션</a></li>
+								</ul>
+							</li>
+							<li class="heads-sub"><a href="#">공용 태양광</a>
+								<ul>
+									<li><a href="#">공용 태양광 소개</a></li>
+									<li><a href="#">발전량 현황</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">국민 DR 참여</a>
+						<ul>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">국민 DR</a></li>
+							<li><a href="#">기기 현황</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">전력거래</a>
+						<ul>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">에너지 현황</a></li>
+							<li><a href="#">에너지 구매</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">고객센터</a>
+						<ul>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">자주하는 질문</a></li>
+							<li><a href="#">서비스 소개</a></li>
+							<li><a href="#">문의하기</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+
+    <div class="contents">
+        <div class="wrapper-md">
+			<div class="box-form">
+				<form action="" name="login">
+					<h1>로그인</h1>
+					<div class="input-wrap input-wrap-login">
+						<table class="table table-login">
+							<colgroup>
+								<col width="32%"/>
+							</colgroup>
+							<th>아이디</th>
+							<td>
+								<input type="text" placeholder="아이디를 입력해주세요.">
+							</td>
+						</table>
+					</div>
+					<div class="input-wrap input-wrap-login">
+						<table class="table table-login">
+							<colgroup>
+								<col width="32%"/>
+							</colgroup>
+							<th>비밀번호</th>
+							<td>
+								<input type="password" placeholder="비밀번호를 입력해주세요.">
+							</td>
+						</table>
+					</div>
+					<div class="box-check-wrap">
+						<div class="check_wrap">			
+							<input type="checkbox" class="check_box" name="check" id="checking">
+							<label for="checking" class="label">로그인 상태 유지</label>
+						</div>
+					</div>
+					<div class="boxbn-btn mg-top-10">
+						<button type="submit" class="btn btn-warning">로그인</button>
+					</div>
+					<div class="boxbn-btn">
+						<a href="#" class="btn btn-info">회원가입</a>
+					</div>
+					<div class="search-box">
+						<span class="btn-link" data-popup="serach-id">아이디 찾기</span>
+						<span class="btn-link" data-popup="serach-id">비밀번호 찾기</span>
+					</div>
+				</form>
+			</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="wrapper-md">
+            <div class="row">
+                <div class="col-lg-2 col-xs-12">
+					<div class="boxcs boxcs-a">
+						<h2>고객센터</h2>
+						<h3>1555-1234</h3>
+					</div>
+				</div>
+                <div class="col-lg-6 col-xs-12">
+					<div class="boxcs boxcs-b">
+						<p>서울시 성동구 광나루로 172 린하우스 (성수동1가)</p>
+						<p>TEL. 02-418-7550  FAX. 02-418-7551</p>
+						<p>COPYRIGHT(C) 2015 OMNISYSTEM All Rights Reserved.</p>
+					</div>
+				</div>
+                <div class="col-lg-4 col-xs-12">
+					<div class="boxcs boxcs-c">
+						<ul>
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#">개인정보처리방침</a></li>
+						</ul>
+						<div class="links">
+							<a href="#"><img src="../images/common/ico_logo-other.png" alt="로고" /></a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+	<div class="popup-wrap">
+		<div class="popup-overlay"></div>
+		
+		<!-- 아이디 찾기 팝업 -->
+		<div class="popup change serach-id" id="serach-idPopup">
+			<div class="popup-contain">
+				<div class="popup-inner">
+					<div class="tabs">
+						<ul>
+							<li class="current" data-tab="tab-a"><p>아이디 찾기</p></li>
+							<li class=""data-tab="tab-b"><p>비밀번호 찾기</p></li>
+						</ul>
+					</div>
+					<div class="contents">
+						<div id="tab-a" class="tab-content current">
+							<div class="input-wrap input-wrap-login">
+								<table class="table table-login">
+									<colgroup>
+										<col width="25%"/>
+									</colgroup>
+									<th>이름</th>
+									<td>
+										<input type="text" placeholder="이름을 입력해주세요.">
+									</td>
+								</table>
+							</div>
+							<div class="input-wrap input-wrap-login">
+								<table class="table table-login">
+									<colgroup>
+										<col width="25%"/>
+									</colgroup>
+									<th>이메일</th>
+									<td>
+										<input type="text" placeholder="가입시 기입한 이메일을 입력해주세요.">
+									</td>
+								</table>
+							</div>
+							<div class="boxbn-btn mg-top-30 absolute">
+								<button type="submit" class="btn btn-gray close-popup">취소</button>
+								<button type="submit" class="btn btn-warning close-btn-a" data-popup="result-id">확인</button>
+							</div>
+						</div>
+						<div id="tab-b" class="tab-content">
+							<div class="input-wrap input-wrap-login">
+								<table class="table table-login">
+									<colgroup>
+										<col width="28%"/>
+									</colgroup>
+									<th>아이디</th>
+									<td>
+										<input type="text" placeholder="아이디를 입력해주세요.">
+									</td>
+								</table>
+							</div>
+							<div class="input-wrap input-wrap-login">
+								<table class="table table-login">
+									<colgroup>
+										<col width="28%"/>
+									</colgroup>
+									<th>이름</th>
+									<td>
+										<input type="text" placeholder="이름을 입력해주세요.">
+									</td>
+								</table>
+							</div>
+							<div class="input-wrap input-wrap-login">
+								<table class="table table-login">
+									<colgroup>
+										<col width="28%"/>
+									</colgroup>
+									<th>이메일</th>
+									<td>
+										<input type="text" placeholder="가입시 기입한 이메일을 입력해주세요.">
+									</td>
+								</table>
+							</div>
+							<div class="boxbn-btn mg-top-30 absolute">
+								<button type="submit" class="btn btn-gray close-popup">취소</button>
+								<button type="submit" class="btn btn-warning close-btn-a" data-popup="result-pass">확인</button>
+							</div>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<!-- // end popup -->
+
+		<!-- 아이디 찾기 결과 팝업 -->
+		<div class="popup change" id="result-idPopup">
+			<div class="popup-contain">
+				<div class="popup-inner">
+					<div class="title-wrap">
+						<h1>아이디 찾기 결과</h1>
+					</div>
+					<div class="contents">
+						<div class="box-text">
+							<p>홍길동님의 아이디는 <span>aklsundio02</span> 입니다.</p>
+						</div>
+					</div>
+					<div class="boxbn-btn mg-top-30 absolute">
+						<button type="submit" class="btn btn-gray close-popup">취소</button>
+						<button type="submit" class="btn btn-warning close-popup">로그인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- // end popup -->
+
+		<!-- 비밀번호 찾기 결과 팝업 -->
+		<div class="popup change" id="result-passPopup">
+			<div class="popup-contain">
+				<div class="popup-inner">
+					<div class="title-wrap">
+						<h1>임시 비밀번호 발송</h1>
+					</div>
+					<div class="contents">
+						<div class="box-text">
+							<p><span>aklsundio02@naver.com</span> 으로</p>
+							<p>임시 비밀번호를 발송 하였습니다.</p>
+							<h3 class="mg-top-10">임시 비밀번호로 로그인 후 반드시 <span class="blue">비밀번호를 변경</span> 해주세요.</h3>
+						</div>
+					</div>
+					<div class="boxbn-btn mg-top-30 absolute">
+						<button type="submit" class="btn btn-gray close-popup">취소</button>
+						<button type="submit" class="btn btn-warning close-popup" data-popup="result-pass">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- // end popup -->
+	
+	</div>
+	<!-- // popup-wrap -->
+
+
+<script src="../js/libs/datepicker/jquery-ui.js"></script><!-- 캘린더 js-->
+<script src="../js/ui/ui_popup.js"></script>
+<script src="../js/ui/custom.js"></script>
+
+</body>
+</html>
